@@ -1,0 +1,13 @@
+lc1860 code:
+	PLATFORM_VERSION:=4.4.4
+	pLATfORM_SDK_VERSION:=19
+
+linuxkernel	version = 3
+		patchlevel = 10
+		sublevel   = 0
+		extraversion =
+		name	= Unicycling Gorilla
+
+官方版本对应关系
+Kitkat	4.4-4.4.4	API level 19	发布时间2013.9
+

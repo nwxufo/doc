@@ -1,0 +1,8 @@
+文件恢复
+========
+最简单的请跨国你是被删除的额文件被某个进程打开，
+此时可以从/proc/删除该文件的进程/文件设备描述符来恢复。
+	首先有lsof找到打开文件的进程，有了PID和FD之后，就可以恢复文件。、
+	cp /proc/<PID>/fd/<FD><deleted-file-name>
+ext3/ext4/文件系统的恢复可以用extundelete工具。
+也可以使用debugfs工具，debugfs适用于ext2/ext3/ext4/文件系统。

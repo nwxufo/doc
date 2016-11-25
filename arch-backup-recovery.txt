@@ -1,0 +1,20 @@
+archlinux系统备份和还原，使用tar命令
+====================================
+‘
+$ tar cvpzf ~ /root.tar.gz --exclude=/proc --exclude=/lost+found --exclude=/mnt --exclude=/sys --exclude=/media --exclude=/home
+
+2.重新成成内核镜像。
+==================
+使用live CD启动系统
+# mount -o bind /proc/mnt/proc
+# mount -o bind /dev/mnt/dev
+# mount -o bind /sys/mnt/sys
+# chroot /mnt
+# mkinitcpio -p linux
+# exit
+# reboot
+可能还有其他问题。
+其中。
+/var/run/是/run的软链接。而恢复后的系统却是一个单独的文件夹，这样dbus运行会出现问题，导致dbus的一系列程序运行出现问题出错。
+#rm -rf /var/run
+#ln -s /run /var
