@@ -1,0 +1,33 @@
+1.FireFox BookMark Config
+	about:config
+	右键新建一个字符串，名为 browser.bookmarks.file，输入字串值`pwd`
+	//书签自动备份最大数目
+	user_pref("browser.bookmarks.max_backups", 0);
+	//禁止书签菜单显示最近的书签
+	user_pref("browser.bookmarks.showRecentlyBookmarked", false);
+	//关闭火狐时自动备份书签到配置目录下
+	user_pref("browser.bookmarks.autoExportHTML", true);
+2.git repro howto
+	…or create a new repository on the command line
+	cfg_archlinux
+	git@github.com:nwxufo/nwxufo.github.io.git
+	echo "# doc" >> README.md
+	git init
+	git add README.md
+	git commit -m "first commit"
+	git remote add origin git@github.com:nwxufo/doc.git
+	git push -u origin master
+
+	…or push an existing repository from the command line
+
+	git remote add origin git@github.com:nwxufo/doc.git
+	git push -u origin master
+3.git error chinese display
+	错误形式：使用git提示文件名称相关的信息时，显示形如
+		 274\232\350\256\256\346\200.txt 的乱码。
+	解决方案：
+		设置core.quotepath设为false，
+		git config --global core.quotepath false
+		就不会对0x80以上的字符进行quote。
+	Ref:
+		http://zengrong.net/post/1249.htm
