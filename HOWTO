@@ -19,9 +19,13 @@
 	git push -u origin master
 
 	…or push an existing repository from the command line
-
+	
+	#For the first time.
 	git remote add origin git@github.com:nwxufo/doc.git
-	git push -u origin master
+	git push -u origin master 
+	
+	#After that , Just Do
+	git push origin <branch>
 3.git error chinese display
 	错误形式：使用git提示文件名称相关的信息时，显示形如
 		 274\232\350\256\256\346\200.txt 的乱码。
