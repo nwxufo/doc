@@ -1,4 +1,31 @@
 文件恢复工具extundelete的使用。
-1. df -h
-显示当前使用的磁盘
+1. 显示当前使用的磁盘
+====================
+df -h
 
+2. vim插入时间
+==============
+2.1. strftime函数
+:nnoremap <F5> "=strftime("%F")<CR>gP
+:inoremap <F5> <C-R>=strftime("%F")<CR>
+上面两行加入到$HOME/.vimrc当中，重新启动VIM，然后就可以在一般模式和编辑模式下用快捷键F5，插入当前系统时间了。
+这里设置的时间格式是xxxx-xx-xx，当然你也可以修改喜欢的格式，和date(1)命令的时间格式是一致的。
+2.2. 使用命令:s
+在需要插入时间的地方，设置一个标记，比如我设置了itime
+然后执行
+:s/itime//=strftime("%F")/
+2.3. 使用外部shell命令date(1)
+:r !date
+上面的使用r命令从外部date的输出当中读取到当前文件内
+
+3.关于.bash_history
+wc -l ~/.bash_history //命令个数统计
+echo $HISTSIZE //查看history的默认保留条数
+HISTFILESIZE 与 HISTSIZE都是history命令需要用到的两个shell变量，这两个变量到底有什么区别呢？
+
+HISTFILESIZE 定义了在 .bash_history 中保存命令的记录总数，可以理解为.bash_history文件中最多只有HISTFILESIZE行
+
+HISTSIZE 定义了 history 命令输出的记录数，即输出.bash_history文件中的最后HISTSIZE行
+设置保存的命令个数
+	# sed -i 's/^HISTSIZE=1000/HISTSIZE=200/' /etc/profile
+	# source /etc/profile  
