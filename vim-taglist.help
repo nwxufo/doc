@@ -1,0 +1,57 @@
+Vim Ctags
+==============
+1.生成tags文件
+==============
+	ctags -R
+	在运行vim的时候，必须在tags文件所在的目录下运行，否则需要指定tags文件的路径：
+	：set tags=/usr/src/linux***
+或者在vim配置文件中指定目录，编辑～/.vimrc文件，加入上句。注意没有空格。
+或者更好的，让vim自动运行当前目录下的vim脚本.
+在当前的工程中，才让vim设定tags的路径：
+	1.在～/.vim中添加内容。
+		if getfsize("vimscript")>0
+			source vimscript
+		endif
+	2.在需要指定tags路径的工程文件夹下添加vimscript文件，内容为：
+		set tags=/usr/src/linux**
+		或
+		set tags=/usr/src/linux**/tags
+		或
+		set tags+=/usr/src/linux**/tags.lib
+===================
+2. vim脚本增强Ctags
+===================
+2.1每次打开文件事自动更新tags文件
+	在vimscript文件中添加内容：
+	！ctags -R
+	说明：！<bash-command>实现在vimscript运行shell.
+	或者：
+	map:!ctags -R --c-kinds=+p --fields=+iaS --extra=+q
+	按下Ctrl+F12时，更新ctags。
+=================
+3. Vim下使用Ctags
+=================
+3.1 快捷键
+Ctrl + ] 	//跳转到函数定义
+Ctrl + t	//退回光标原位置
+Ctrl + o	//退回光标原位置
+[ {		// [ 转到 { 的位置
+} ]		// 转到下一个 }的闻之与上一条命令对称
+{		//转到上一个空行。
+}	
+gd		//转到光标变量的局部定义/声明。
+×		//[shift+8],转到光标单词下一次的出现位置。
+#		//转到光标单词上一次位置
+Ctrl + w + w 	//在编辑区和Taglsit区切换
+3.2 命令
+:helptags
+:help taglist.txt
+:TlistOpen
+:TlistClose
+:TlistToggle
+=====================
+4.Taglist窗口下的命令
+=====================
+
+_______________________________________________________________
+Ref: www.baidu.com/serch?="vim下的ctags和taglist等的使用和配置"
