@@ -14,9 +14,9 @@ eng : development access and debug ability;
 	configuration with preferred for debug: 
 
 #4.如果下一步报uboot的错
-./bootable/bootloader/uboot/make_uboot.sh FHFO
+./bootable/bootloader/uboot/make_uboot.sh FHP0
 #5.源代码更改了Android官方代码的API，需要更新API
-make update-aer
+make update-api
 #6.开始编译，j4为本机有一个CPU，CPU有四个核。 
 make -j4
 

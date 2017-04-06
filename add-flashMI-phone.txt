@@ -68,16 +68,15 @@ adb reboot bootloader
 
 
 fastboot $* flash uboot image/u-boot.bin 
-fastboot $* flash kernel images/k
+fastboot flash logo image/logo.bin
 fastboot $* flash kernel image/kernel 
+fastboot flash kernel_recovery images/kernel
 fastboot $* flash ramdisk image/ramdisk.img 
 fastboot $* flash modemarm image/modemarm.bin 
 fastboot $* flash modemdsp image/modemdsp0.bin 
-fastboot $* flash kernel_recovery image/recovery
-fastboot $* flash kernel_recovery image/recovery.img 
 fastboot $* flash ramdisk_recovery image/ramdisk-recovery.img 
 fastboot $* flash ramdisk_amt1 image/ramdisk-amt1.img 
 fastboot $* flash ramdisk_amt3 image/ramdisk-amt3.img 
 fastboot $* flash cache image/cache.img  
-fastboot $* flash cache image/cache.img 
-=
+fastboot flash system image/system.img
+fastboot flash userdata image/userdata.img

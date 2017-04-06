@@ -19,6 +19,7 @@ df -h
 上面的使用r命令从外部date的输出当中读取到当前文件内
 
 3.关于.bash_history
+===================
 wc -l ~/.bash_history //命令个数统计
 echo $HISTSIZE //查看history的默认保留条数
 HISTFILESIZE 与 HISTSIZE都是history命令需要用到的两个shell变量，这两个变量到底有什么区别呢？
@@ -29,3 +30,77 @@ HISTSIZE 定义了 history 命令输出的记录数，即输出.bash_history文�
 设置保存的命令个数
 	# sed -i 's/^HISTSIZE=1000/HISTSIZE=200/' /etc/profile
 	# source /etc/profile  
+===========================
+3. Linux Programming Manual
+===========================
+The GUN C library includes a manual that describes the use of many of the
+functions in the library. via the command:
+	$ info libc
+=======================================
+4. Source code of existing applications
+=======================================
+$ which ls
+/bin/ls
+找到命令的安装包。
+$rpm -qf /bin/ls
+$dpkg -S /bin/ls
+===================
+vim编辑后忘了使用sudo
+===========
+:w! sudo tee %
+===========================================
+4. 查找目录下的所有文件中是否包含某个字符串
+==========================================
+查找目录下的所有文件是否包含有某个字符串
+	find .|xargs grep -ri "IBM"
+并且只打印文件名
+	find .|xargs grep -ri "IBM" -L
+
+find pathname -options [print -exec -ok]
+----------------------------------------
+options:
+	-name: 按照文件名查找
+	-perm: 按文件权限
+	-user: 按文件的用户属性查找
+	-group: 按文件所属的组查找。
+	-mtime -n +n modified time. -n: inside n days. +n: outside n days.
+	-size n[c]查找文件长度为n的文件，带有c是表示文件长度一字节计算
+	-nogroup 无有效组属性，即文件所属组在/etc/groups中不存在。
+	-newer file1 !file2 查找更改时间比文件file1新比file2旧 的文件
+	-type 按类型查找，b(lock dev),d(irectory),e(char dev),p(ip),l(ink),f(ile,normally)
+	-depth
+
+grep [options]
+-------------------
+-c: only output matched row's count
+-i: 不区分大小写
+-h: 不显示文件名
+-H: 只显示文件名
+-l: 查询多个文件时子显示匹配字符串的文件名
+-v：显示不包含匹配文本的所有行
+
+xargs命令
+
+？？？？？
+Ref
+http://m.blog.csdn.net/article/detail?id=7716908
+http://cn.bing.com/search?=`thisTitle`
+
+
+位块图 Block Bitmap
+一个块组中的块是这样利用的：数据块存储在所有文件的数据，superblock,groupDescriptorTable,blockBitmap,inodeBitmap,inodeTable.这几部分存储该块组的描述信息，blockBitmap描述莫个块是否被使用。
+df 命令只要查看每个块组的blockbitmap，
+du 命令查看一个较大的目录时，不可避免的搜素整个分区，
+另一个问题：在格式化一个分区是究竟会划分出多少个块组？
+	主要的限制在与快位图本身必须只占用一个块，使用mke2fs格式化时默认大小是1024字节，
+那么inode块是如何划分的？
+	inode存储了`ls -la`的信息，inode table占多少个块在格式化时就要决定并写入到 groupdescriptorTable中，mke2fs格式化工具的默认策略是一个块组中有多少个8KB就分贝多少个inode.由于数据快占据了整个块组的绝大部分，也可以近似认为
+
+=============================
+5.下载整个网站 wget
+=============================
+wget -m -e robots=off -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6" "https://kernelnewbies.org/"
+
+"-e robots=off"  让wget耍流氓无视robots.txt协议
+-U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6"  伪造agent信息
+TODO: wget 多线程设置
