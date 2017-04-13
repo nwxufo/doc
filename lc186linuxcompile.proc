@@ -1,0 +1,36 @@
+===============
+1. 内核环境配置
+===============
+make ARCH=UM CROSS_COMPILE= localmodconfig
+ make ARCH=x86_64 CROSS_COMPILE= -j4 ${KERNEL_CFLAGS}
+===============
+2. 编译错误修复
+===============
+: 在函数‘mbind_range’中:
+mm/mempolicy.c:731:34: 错误： ‘name’未声明(在此函数内第一次使用)
+mm/mempolicy.c:731:34: 附注： 每个未声明的标识符在其出现的函数内只报告一次
+make[1]: *** [mm/mempolicy.o] 错误 1
+make: *** [mm] 错误 2
+将name 改为vma
+ CC      kernel/power/suspend.o
+kernel/power/suspend.c:30:32: 致命错误： plat/comip-monitor.h：没有那个文件或目录
+编译中断。
+替换掉/注释掉
+  CC      fs/ext3/namei.o
+  CC      arch/x86/kernel/early-quirks.o
+make[2]: *** [kernel/power/suspend.o] 错误 1
+make[1]: *** [kernel/power] 错误 
+kernel/smp.c:15:27: 致命错误： plat/hardware.h：没有那个文件或目录
+编译中断。
+替换掉/注释掉
+  CC      kernel/spinlock.o
+  CC      kernel/uid16.o
+make[1]: *** [kernel/smp.o] 错误 1
+make[1]: *** 正在等待未完成的任务....
+============
+3.生成安装包
+============
+ make localmodconfig
+make-kpkg --initrd --revision 2016.11.09 --append-to-version -nwx kernel_ima    ge kernelheaders
+sudo dpkg -i *.deb
+
