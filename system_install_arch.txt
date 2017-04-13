@@ -1,0 +1,21 @@
+pacman 引起的错误：
+	1.Failed to commit transaction (conflicting files)" error
+	pacman has detected a file conflict, and by design, will not overwrite
+    files for you. This is a design feature, not a flaw.
+        The problem is usually trivial to solve. A safe way is to first check if anoter package owns the file
+	( pacman -Qo/path/to/file ).
+1.pacman -S archlinux-keyrings
+鏡像版本較旧，更新keryings
+2.pacman -Syu 更新系统。
+3.安装图形系统
+	pacman -S xorg
+4.安装Nvidia显卡驱动。
+	pacman -S nvidia nvidia-libgl
+如果安装失败，配置/etc/?.cfg,
+	/etc/mkinitcpio/linux.preset 中包含系统默认加载的内核模块的配置文件目录
+	mkinitcpio -p linux 后重启系统
+	使linux内核不加载nouveau(Nividia的开源版驱动)
+	
+5.桌面系统，icewm,urxvt,
+	并配置文件~/.xinit ~/.icewm(文件夹); ~/.Xdefaults(urxvt终端显示)
+6.
