@@ -16,6 +16,7 @@ pacman 引起的错误：
 	mkinitcpio -p linux 后重启系统
 	使linux内核不加载nouveau(Nividia的开源版驱动)
 	
-5.桌面系统，icewm,urxvt,
+5.copy /usr/share/fonts 目录
+6.桌面系统，icewm,urxvt,
 	并配置文件~/.xinit ~/.icewm(文件夹); ~/.Xdefaults(urxvt终端显示)
-6.
+
