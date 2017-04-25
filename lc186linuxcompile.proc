@@ -3,6 +3,8 @@
 ===============
 make ARCH=UM CROSS_COMPILE= localmodconfig
  make ARCH=x86_64 CROSS_COMPILE= -j4 ${KERNEL_CFLAGS}
+other command maybe help:
+make menuconfig
 ===============
 2. 编译错误修复
 ===============

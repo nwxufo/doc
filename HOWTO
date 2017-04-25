@@ -7,25 +7,6 @@
 	user_pref("browser.bookmarks.showRecentlyBookmarked", false);
 	//关闭火狐时自动备份书签到配置目录下
 	user_pref("browser.bookmarks.autoExportHTML", true);
-2.git repro howto
-	…or create a new repository on the command line
-	cfg_archlinux
-	git@github.com:nwxufo/nwxufo.github.io.git
-	echo "# doc" >> README.md
-	git init
-	git add README.md
-	git commit -m "first commit"
-	git remote add origin git@github.com:nwxufo/doc.git
-	git push -u origin master
-
-	…or push an existing repository from the command line
-	
-	#For the first time.
-	git remote add origin git@github.com:nwxufo/doc.git
-	git push -u origin master 
-	
-	#After that , Just Do
-	git push origin <branch>
 3.git error chinese display
 	错误形式：使用git提示文件名称相关的信息时，显示形如
 		 274\232\350\256\256\346\200.txt 的乱码。

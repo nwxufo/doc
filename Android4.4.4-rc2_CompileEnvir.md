@@ -1,0 +1,56 @@
+#Android4.4.4-rc2 编译环境怕配置
+
+##编译环境要求：
+根据Android源代码官网说明，环境要就如下
+make 3.?-3.8.1
+java Orecal JDK 6
+Ubuntu 12.04
+说明，公司给定的代码是Android4.4.4,其中Linux内核版本是3.10.0
+
+##环境配置要求
+1. 首先在Orecal官网下载JDK：
+http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html
+	×执行安装命令
+sudo mkdir /usr/lib/jvm
+sudo cp jdk-6u45-linux-x64.bin /usr/lib/jvm/
+sudo chmod +x jdk-6u45-linux-x64.bin
+sudo ./jdk-6u45-linux-x64.bin
+	×环境变量
+sudo mv jdk1.6.0_45/ jdk6
+export JAVA_HOME=/usr/lib/jvm/jdk6
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+	×使能环境变量
+source ~/.bashrc
+	×设为默认，如果需要的话
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk6/bin/java 300
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk6/bin/javac 300
+sudo update-alternatives --config java
+	×验证
+	java -version
+
+2. 安装依赖
+根据官网上的指示我们需要安装如下软件包和lib
+$ sudo apt-get install git gnupg flex bison gperf build-essential \
+  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
+  libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 \
+  libgl1-mesa-dev g++-multilib mingw32 tofrodos \
+  python-markdown libxml2-utils xsltproc zlib1g-dev:i386
+$ sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
+==================
+##How to complie
+==================
+1. 进入源码根目录。对应脚本为lc1860building.sh
+0.make clobber
+1.source build/envsetup.sh
+2.lunch full_lc1860evb2-userdebug 
+	使用lunch命令查看所有选项，不过貌似只有这个参数能够编译成功。
+3. make update-api
+	可能四室给的源码改动过API 所以要执行这个命令
+4. cd bootable/bootloader/uboot
+   ./make_uboot.sh FHFO
+	重新编译Uboot，否则下一步报错，经验之谈。
+5. make -j4
+	使用4线程编译内核，线程数建议为物理CPU个数×每个CPU内核数
+

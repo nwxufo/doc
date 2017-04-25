@@ -7,8 +7,9 @@ make mrproper
 cp -vi /boot/config-3.8.0-29-generic  .config
 
 make oldconfig
+make allyesconfig
 make menuconfig
 make localmodconfig
 make -j4
-make-kpkg --initrd --revision 2016.11.09 --append-to-version -nwx kernel_image kernelheaders
+make-kpkg --initrd --revision 2016.11.09 --append-to-version -nwx kernel_image kernel_headers
 sudo dpkg -i *.deb
