@@ -1,0 +1,64 @@
+RedHat 有 /etx/rc.local文件，在里面写入要执行的命令就可以开机执行。
+Archlinux 采用的是守护进程的机制（daemon)。守护进程使用systemd管理。
+用户使用systemctl命令读取配置好的.service文件。
+.service文件位于
+""" /{etc,usr/lib,run}/systemd/system """
+
+开机自动启动
+""" systemctl enable|disable service_name """
+
+手动启动
+""" systemctl start|stop service_name """
+
+重启服务
+""" systemctl restart service_name """
+""" systemctl status service_name """
+""" 
+systemctl is-enabled service_name
+echo $?
+"""
+===========================--DEMO:
+1. in new file: /etc/myrc.local
+""""
+#! /bin/bash
+# This file defines the commands that will be
+# executed at system startup.
+
+# echo "exect mylocalinitscript." > /dev/ttyAMA0
+
+sh /home/myshell1.sh
+sh /home/myshell2.sh
+"""
+
+2. change your shell file mode bits.
+""" chmod +x <your-shell> """
+
+3. create your .service file.
+add file: /usr/lib/systemd/system/myrc-local.service
+content:
+"""
+[Unit]
+Description=/etc/myrc.local Compatibility
+ConditionPathExists=/etc/rc.local
+[Service]
+Type=forking
+ExecStart=/etc/myrc.local start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+[Install]
+WantedBy=multi-user.target
+"""
+
+4. add soft link
+""" 
+cd /etc/systemd/system/multi-user.target.wants 
+ln -s /usr/lib/systemd/system/myrc-local.service myrc-local.service
+"""
+
+5. test
+""" systemctl start myrc-local.service """
+
+6. enable service
+""" systemctl enable rc-local.service """

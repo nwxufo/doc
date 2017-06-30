@@ -1,0 +1,12 @@
+1. download:
+	http://www.handhelds.org/download/projects/toolchain/arm-linux-gcc-3.4.1.tar.bz2
+
+2. tar -jxvf arm-linux-gcc-3.4.1.tar.bz2 -C /
+
+3. ENVIRONMENT
+	#edit /etc/bash.bashrc OR ~/.bashrc OR /etc/profile , add:
+	#export PATH＝/usr/local/arm/3.4.1/bin:$PATH
+
+4. TEST
+	arm-linux-gcc -v
+	

@@ -1,0 +1,26 @@
+创建磁盘镜像的同时进行压缩：
+dd if=/dev/sda |gzip > disk.img.gz
+gzip -dc disk.img.gz | dd of=/dev/sda
+dd if=/dev/sda1 |bzip2 > partiation.img.gz2
+gizp help:
+-c output to STDOUT
+-d unzip
+-1 fastest
+-9 best
+dd bs=512 count=? if=/dev/sda | gzip -6 >/ghost.img.gz
+恢复：恢复到另一太计算机时，可能发现网卡是eth1,而不是eth0,因为/etc/udev/rules.d/70-persisitent-net.rules, 在备份钱先删除他，/etc/mechine
+磁盘修复
+dd if=/dev/sdn of=/dev/sdn
+
+磁盘读写速度。
+dd if=/dev/zero of=/home/1Gb.file bs=4 count=(2^20/4=1030144)
+
+备份MBR
+dd if=/dev/hdx of=/path/to/imageMBR count=1 bs=512
+
+net cat 远程备份
+dd if=/dev/hda bs=16065b | netcat < targethostip > 1234
+netcat -I -p 1234 | dd of=/dev/hdc bs=16065b
+
+netcat -I -p 1234 | bzip2 > partion.img 
+netcat -I -p 1234 |gzip >partition
