@@ -1,17 +1,39 @@
-===========================
-1. 显示当前使用的磁盘
-2. vim插入时间
-3.关于.bash_history
-4. Source code of existing applications
-4. 查找目录下的所有文件中是否包含某个字符串
-vim编辑后忘了使用sudo
-位块图 Block Bitmap
-5.下载整个网站 wget
-===========================
+######firfox-bookmark
+```
+1. about:config
+2. search: bookmark
+	add:
+	browser.bookmarks.file	/home/fenghuo/Doucments/firfoxbookmark.html
+	browser.bookmarks.autoExportHTML	true
+	browser.bookmarks.editDialog.firstEditField	tagsField
+	browser.bookmarks.max_bckups	0
+	
+######右键在终端中打开工具
+```sudo apt-get install nautilus-open-terminal```
+######显示当前使用的磁盘
+```df -h ```
+######显示分区的uuid
+```wipefs /dev/sdax```
+######关于.bash_history
+
+######查找目录下的所有文件中是否包含某个字符串
+######vim编辑后忘了使用sudo
+```:w! sudo tee %```
+######下载整个网站 wget
+```wget -r -p -np -k http://xxx.com/xxx```
+```
+-r,  --recursive（递归）          specify recursive download.（指定递归下载）
+-k,  --convert-links（转换链接）      make links in downloaded HTML point to local files.（将下载的HTML页面中的链接转换为相对链接即本地链接）
+-p,  --page-requisites（页面必需元素）    get all images, etc. needed to display HTML page.（下载所有的图片等页面显示所需的内容）
+-np, --no-parent（不追溯至父级）          don't ascend to the parent directory.
+另外断点续传用-nc参数 日志 用-o参数
 文件恢复工具extundelete的使用。
-1. 显示当前使用的磁盘
-====================
-df -h
+--------------------------------------------------------------------
+wget -m -e robots=off -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6" "https://kernelnewbies.org/"
+
+"-e robots=off"  让wget耍流氓无视robots.txt协议
+-U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6"  伪造agent信息
+```
 
 2. vim插入时间
 ==============
@@ -105,12 +127,3 @@ du 命令查看一个较大的目录时，不可避免的搜素整个分区，
 	主要的限制在与快位图本身必须只占用一个块，使用mke2fs格式化时默认大小是1024字节，
 那么inode块是如何划分的？
 	inode存储了`ls -la`的信息，inode table占多少个块在格式化时就要决定并写入到 groupdescriptorTable中，mke2fs格式化工具的默认策略是一个块组中有多少个8KB就分贝多少个inode.由于数据快占据了整个块组的绝大部分，也可以近似认为
-
-=============================
-5.下载整个网站 wget
-=============================
-wget -m -e robots=off -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6" "https://kernelnewbies.org/"
-
-"-e robots=off"  让wget耍流氓无视robots.txt协议
--U "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6"  伪造agent信息
-TODO: wget 多线程设置

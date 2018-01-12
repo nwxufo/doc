@@ -1,0 +1,5 @@
+嵌入式Linux的GDB调试环境由HOST和Target两部分组成,
+	Host端使用arm-linux-gdb,Target端(嵌入式端)使用gdbserver.
+	Target端必须包括gdbserver程序.
+
+1.下载arm源代码

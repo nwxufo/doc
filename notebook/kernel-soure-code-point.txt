@@ -1,0 +1,19 @@
+Tips1:
+	kernel/net/socket.c line:110
+		usigned int sysctl_net_busy_read __read_mostly;
+Solution:
+	find __read_mostly 's define command:
+	  (find kernel/ -type f |xargs grep __read_mostly) |grep define
+Other:
+	__read_mostly作用：
+		讲声明的变量放在.data..read_mostly段中，加快访问速度。
+
+Tips2:
+	likely , unlikely
+	并没有盖面程序的逻辑，仅仅是对分支的预测。
+	普通情况：
+		if(foo) { ... }
+	认为foo很可能/大多数多时间会发生
+		if( likely(foo) ) { ... }
+	反正，认为foo基本不会发生
+		if( unlikely(foo) ) { ... }

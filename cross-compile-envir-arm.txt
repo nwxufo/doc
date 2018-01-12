@@ -1,5 +1,7 @@
 1. download:
 	http://www.handhelds.org/download/projects/toolchain/arm-linux-gcc-3.4.1.tar.bz2
+http://platformx.sourceforge.net/Documents/nuts/ToolChain.html 
+https://launchpad.net/gcc-arm-embedded/+download
 
 2. tar -jxvf arm-linux-gcc-3.4.1.tar.bz2 -C /
 
@@ -10,3 +12,4 @@
 4. TEST
 	arm-linux-gcc -v
 	
+5. minicom tftp software install

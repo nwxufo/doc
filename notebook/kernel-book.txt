@@ -1,0 +1,37 @@
+note from book <<linux-kernel-development>>
+2017-08-10
+milo
+fenghuo:设计一室
+
+SECTION PROCESS
+1. process description & task struction
+2. process cretion
+3. Linux implementation of task
+4. Process termination
+5. multitask & scheduling ( Policy, alogrithm & implementation )
+6. Preemption & Context Switching
+7. Schedular-Related SystemCall.
+
+SECTION SYSTEM CALLS
+1. system call numbers
+2. system call performance.
+3. system call handlers
+4. system call context.
+
+SECTION INTERRUPTS
+1.  register a interruption
+2. write a interruption
+3. implementation interrution handles.
+4. interrupt control5.
+5. Bottom halves
+...
+5. Bottom halves
+...
+5. Bottom halves
+...
+5. Bottom halves
+...
+5. Bottom halves
+...
+
+SECTION SYNCHRONIZTION

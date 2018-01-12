@@ -1,0 +1,9 @@
+1.git address:
+	
+```
+Ref:
+http://www.cnblogs.com/linux-home/p/5404646.html
+http://opensourceforu.com/2011/05/linux-kernel-development-using-git/
+```
+
+

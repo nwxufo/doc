@@ -1,15 +1,20 @@
 生成内核的安装包，头文件和内核文件
 sudo apt-get install git-core libncurses5 libncurses5-dev libelf-dev asciidoc binutils-dev  qt3-dev-tools libqt3-mt-dev libncurses5 libncurses5-dev fakeroot build-essential crash kexec-tools makedumpfile kernel-wedge kernel-package
-sudo apt-get install git-core libncurses5 libncurses5-dev libelf-dev asciidoc binutils-dev linux-source qt3-dev-tools libqt3-mt-dev libncurses5 libncurses5-dev fakeroot build-essential crash kexec-tools makedumpfil
-e kernel-wedge kernel-package
+sudo apt-get install git-core libncurses5 libncurses5-dev libelf-dev asciidoc binutils-dev linux-source qt3-dev-tools libqt3-mt-dev libncurses5 libncurses5-dev fakeroot build-essential crash kexec-tools makedumpfile kernel-wedge kernel-package
 
 make mrproper
 cp -vi /boot/config-3.8.0-29-generic  .config
 
 make oldconfig
 make allyesconfig
+make allmodconfig
 make menuconfig
 make localmodconfig
 make -j4
 make-kpkg --initrd --revision 2016.11.09 --append-to-version -nwx kernel_image kernel_headers
-sudo dpkg -i *.deb
+sudo dpkg -i *.deb [headers recommand install]
+make htmldocs
+uninstall:
+dpkg --get-selections |grep linux
+sudo apt-get remove linux-image-(kernel version)
+sudo apt-get remove linux-headers-(kernel version)

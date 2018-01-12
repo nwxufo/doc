@@ -38,9 +38,9 @@ $ sudo apt-get install git gnupg flex bison gperf build-essential \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos \
   python-markdown libxml2-utils xsltproc zlib1g-dev:i386
 $ sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
-==================
+
 ##How to complie
-==================
+
 1. 进入源码根目录。对应脚本为lc1860building.sh
 0.make clobber
 1.source build/envsetup.sh

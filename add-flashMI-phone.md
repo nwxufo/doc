@@ -1,29 +1,29 @@
-# 1.红米2A/ leadcore 1860开发环境配置
-1. 编译adb
+# 红米2A/ leadcore 1860开发环境配置
+#1. 编译adb
  在编译完成的源码基础上执行
-	 { $sudo make adb }
+	 $ sudo make adb
   使用USB连接到计算机，查看连接端口。
-	 { $lsusb }
+	  $ lsusb
 
  运行命令：` cd .android/ `，查看目录 ` ls -l `
 	编辑adb_usb.ini，如果没有创建它
 	添加一行内容：0x2717
 	保存后退出编辑器。
 
-* 创建udev rules文件
-	{ sudo gedit  /etc/udev/rules.d/53-android.rules }
+#2 创建udev rules文件
+	sudo gedit  /etc/udev/rules.d/53-android.rules
 增加以下文本：
 ```
-SUBSYSTEM=="usb", SYSFS{idVendor}=="18d1", MODE="0666" 
-SUBSYSTEM=="usb_device", SYSFS{idVendor}=="18d1", MODE="0666" 
+SUBSYSTEM=="usb", SYSFS{idVendor}=="18d1", MODE="0666"
+SUBSYSTEM=="usb_device", SYSFS{idVendor}=="18d1", MODE="0666"
 ```
 保存退出，设置权限：
 `sudo chmod a+rx /etc/udev/rules.d/70-android.rules`
 编辑 ~/.bashrc 文件加入adb tool的环境变量
 `export PATH=${PATH}:/home/{android-source/out/host/linux}/platform-tools`
 运行命令，重启udev：
-`$sudo service udev restart`
-* 查看设备连接，注意命令权限问题
+```$sudo service udev restart```
+查看设备连接，注意命令权限问题
 ~~~
 adb kill-server
 adb start-server
@@ -35,33 +35,26 @@ adb root
 * daemon not running. starting it now on port 5037 *
 * daemon started successfully *
 ~~~ ```
-List of devices attached 
+List of devices attached
 
-* 进入fastboot
-`adb shell`
+```Ref: http://www.cnblogs.com/lucky-tom/p/3449700.html```
 
-`Ref: http://www.cnblogs.com/lucky-tom/p/3449700.html`
-===============================================================
+小结
 ```
 lsusb
 sudo vim /etc/udev/rules.d/70-android.rules
-sudo chmod a+rx /etc/udev/rules.d/70-android.rules 
+sudo chmod a+rx /etc/udev/rules.d/70-android.rules
 sudo apt-get install Android-tools-adb
 service udev restart
-${pwd}
-echo ${pwd}
-echo `pwd`
 ```
-=================
-usb转串口支持
-lsmod |grep usbseril
+查看系统对usb转串口的支持
+`smod |grep usbseril`
 查看当前的usb串口
-dmesg |grep ttyUSB0
-sudo apt-get install minicom
+`esg |grep ttyUSB0`
 
+系统烧写命令
+```
 adb reboot bootloader
-
-
 fastboot $* flash uboot image/u-boot.bin 
 fastboot flash logo image/logo.bin
 fastboot $* flash kernel image/kernel 
@@ -75,3 +68,4 @@ fastboot $* flash ramdisk_amt3 image/ramdisk-amt3.img
 fastboot $* flash cache image/cache.img  
 fastboot flash system image/system.img
 fastboot flash userdata image/userdata.img
+```
