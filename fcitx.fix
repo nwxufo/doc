@@ -1,0 +1,10 @@
+sudo pacman -S fcitx fcitx-im fcitx-libpinyin
+vim ~/.xinitrc
+
+first lin is most important.
+"""
+export GTK_IM_MODULE=xim
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+exec icewm-session
+"""

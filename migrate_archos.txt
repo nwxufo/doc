@@ -1,0 +1,30 @@
+
+2.
+	old machine:
+		pacman -Qqen > Packages
+		pacman -Qqem > Packages.aur
+1.
+download archlinux ISO and burn it to usb.
+Install it followed by WiKi Document.
+
+Install software that installed in old machine.
+# xargs -a Packages pacman -S --noconfirm --needed
+
+3. rsync my home dictionary.
+	3.1 rsync based on SSH. so enable it firstly.
+	enable root remote ssh login.
+#Port 22
+#PermitRootLogin prohibit-password
+	Port 22
+	PermitRootLogin yes
+	AllowUsers milo
+
+	systemctl start sshd
+	rsync -av /home new_computer_IP:/home
+
+4. systemctl enable slim.server.
+5. configure my fonts. /usr/lib/fonts
+ scp -r /usr/share/fonts root@new_dev_ip:/usr/share/fonts
+6. enable dhcpcd server. for wired network.
+	sudo systemctl enable dhcpcd@enp2s0
+	sudo systemctl vmware-*.service

@@ -1,0 +1,20 @@
+1. install an adroid environment.
+		Bluestacks.
+2. install an vpn app
+	thunder vpn.
+	I searched it using "Speed Pan"
+3. get the youtube vpn webpage. on webpage:
+	keepvid.works
+	post youtube webpage and download it.
+  Ref zhihu: howto download Video from youtube.
+4.
+
+
+Why I write this.
+=================
+I want to do those thing because of GekPwd. yesterday I read it, and intreseted in it. So this things happend today.
+I found a youtobe video yesterday night.
+Then the keen of x86 assmebly language raised.
+Then the memory of I want to learn compiler raised.
+Then I found the materials I collected not to know how to use. and not sort it in a clear way. even no readme file.
+
