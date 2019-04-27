@@ -1,0 +1,6 @@
+X 默认包含省电和屏保的设置，用命令 $ xset q 可见下面两块，意即十分钟无动作则启动屏幕保护并待机。
+
+
+Ref:
+https://blog.csdn.net/zhongguomin/article/details/7088445
+https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling

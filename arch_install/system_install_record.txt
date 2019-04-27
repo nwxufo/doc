@@ -1,0 +1,108 @@
+For Archlinux Install Reference.
+0.first of all
+	After new archlinux was installed.and network was ok.
+	0.0 pacman init & install git
+		pacman-key --init
+		pacman-key --populate
+		pacman -Syu
+		pacman -S --needed base-devel [include gcc and make and pkg-config]
+	0.1 git system config
+		pacman -S git
+		pacman -S openssh
+		ssh-keygen -t rsa -b 4096 -C
+"printer_bzu@163.com"[default save file at ~/.ssh
+		creat a new repository in github and follow it's guide.
+		git cfg_archlinux 
+|aternatively passphrase ]
+		login github and push ssh-key-pub to.
+		test command:"ssh -T git@github.com"
+	0.2 create new user and configure 
+		useradd -m -d /home/pla pla
+		git sys config file and change attribute
+		chown pla:pla -R -V pla	 
+	0.3 cp other config files not in user's home.
+		fold	fonts:	/usr/share/fonts
+		file    1.pacman mirrorlist: /etc/pacman.d/mirrolist
+			2.slim config:	/etc/slim.conf
+			3.command 'ls''s result show different color.it's config
+file location: /etc/profile.
+2.software
+	2.1 wifi-menu
+		dialog; wpa_supplicant.
+	2.2 app
+		email:mutt esmtp
+		reference to '/home/pla/.icewm/menu'
+		firefox chromium smplayer gummi gimp vinagre geany 
+viewnior flashplugin lxc vim
+	2.4 graph for desk
+		xorg-server xorg-server-utils rxvt-unicode icewm slim 
+fcitx xorg-xinit xterm lftp alsa-utils
+		setting slim start when poweron:
+			# systemctl enable slim.service
+	2.5 system tools
+		openssh[x11-ssh-askpass] wget
+		Yaourt Install:
+			add info to /etc/pacman.conf
+				[archlinuxfr]
+				Server=http://repo.archlinux.fr/i686
+			sync it
+				pacman -Sy yaourt
+		reference to:
+			http://www.mike.org.cn/articles/linux-aur-a-useful-tool-for-yaourt/
+
+
+3.some operation 
+	for backup
+	3.1 disable ipv6
+		'/etc/default/grub' addline 
+'GRUB_CMDLINE_LINUX="ipv6.disable=1"'
+	3.2 system voice
+		pacman -S alsa-utils
+		command	'alsamixer'show graph: [MM]: means keep slice. 
+5.software record
+	4.1 LXC
+		lxc arch-install-scripts
+		when install in with sorce code. "./configure" troubled. 
+	4.2 BLOG
+		pip3 install pelican markdown
+	4.2 Raspberry Pi Kernel Development
+		cross compiling tool install: pacamn -S 
+arm-linux-gueabi-gcc?
+	
+6.connect to RaspberryPi
+	need to share my host's network to RaspberryPi
+	TODO: let Raspberry automate set eth device up.
+	reference: http://wiki.archlinux.org/index.php/Network_brige
+	
+Install 'pkg-config' ,the error dispeared.
+======
+help:
+bash command 'pacman -Ss <software>' for software's information.
+
+ERROR
+=====
+1. fstab error.
+discription: when i start system every time: there are 1m30s' waiting time
+		and show info : a start job is running for dev-disk-by.
+reason: /etc/fstab file's swap's UUID is error.
+solution:
+	# blkid //show all block device's info including UUID.
+	# write the right swap UUID to the /etc/fstab.
+2. Error after "pacman -Syu"
+	Because of Nvidia Driver.
+	run the command manufactually.
+	sudo pacman -S vidia-390xx
+======================
+===========================
+=================================
+=======================================
+software install record
+
+Network Tools:
+	wireshark-cli
+	tcpdump
+	airmon-ng
+	mdk3: to crack anth by flood.	
+
+3.some operation 
+ pacman -S bash-completion

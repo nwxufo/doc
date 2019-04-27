@@ -1,0 +1,5 @@
+sudo pacman -S game_name     Yes/NotInstalled
+sudo pacman -S bomberclone     N
+sudo pacman -S astromenace     Y
+sudo pacman -S supertuxkart     Y
+sudo pacman -S speed-dreams

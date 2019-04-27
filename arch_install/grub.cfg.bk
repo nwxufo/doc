@@ -1,0 +1,161 @@
+
+if [ "${grub_platform}" == "efi" ]; then
+    set _UEFI_ARCH="${grub_cpu}"
+    
+    if [ "${grub_cpu}" == "x86_64" ]; then
+        set _SPEC_UEFI_ARCH="x64"
+    fi
+    
+    if [ "${grub_cpu}" == "i386" ]; then
+        set _SPEC_UEFI_ARCH="ia32"
+    fi
+fi
+
+
+insmod part_gpt
+insmod part_msdos
+
+# Include fat fs module - required for uefi systems.
+insmod fat
+
+insmod ext2
+insmod ext2
+insmod ext2
+
+insmod search_fs_file
+insmod search_fs_uuid
+insmod search_label
+
+insmod linux
+insmod chain
+
+set pager="1"
+# set debug="all"
+
+set locale_dir="${prefix}/locale"
+
+
+if [ -e "${prefix}/${grub_cpu}-${grub_platform}/all_video.mod" ]; then
+    insmod all_video
+else
+    if [ "${grub_platform}" == "efi" ]; then
+        insmod efi_gop
+        insmod efi_uga
+    fi
+    
+    if [ "${grub_platform}" == "pc" ]; then
+        insmod vbe
+        insmod vga
+    fi
+    
+    insmod video_bochs
+    insmod video_cirrus
+fi
+
+insmod font
+
+search --fs-uuid --no-floppy --set=usr_part --hint-bios=hd0,msdos3 --hint-efi=hd0,msdos3 --hint-baremetal=ahci0,msdos3  44852f37-2ebf-4fe4-951f-8165e1072661
+search --fs-uuid --no-floppy --set=root_part --hint-bios=hd0,msdos3 --hint-efi=hd0,msdos3 --hint-baremetal=ahci0,msdos3  44852f37-2ebf-4fe4-951f-8165e1072661
+
+if [ -e "${prefix}/fonts/unicode.pf2" ]; then
+    set _fontfile="${prefix}/fonts/unicode.pf2"
+else
+    if [ -e "(${root_part})/usr/share/grub/unicode.pf2" ]; then
+        set _fontfile="(${root_part})/usr/share/grub/unicode.pf2"
+    else
+        if [ -e "(${usr_part})/share/grub/unicode.pf2" ]; then
+            set _fontfile="(${usr_part})/share/grub/unicode.pf2"
+        fi
+    fi
+fi
+
+if loadfont "${_fontfile}" ; then
+    insmod gfxterm
+    set gfxmode="auto"
+    
+    terminal_input console
+    terminal_output gfxterm
+fi
+
+
+# (0) Arch Linux
+set timeout=0
+menuentry "Arch Linux" {
+    set gfxpayload="keep"
+    search --fs-uuid --no-floppy --set=root --hint-bios=hd0,msdos3 --hint-efi=hd0,msdos3 --hint-baremetal=ahci0,msdos3  44852f37-2ebf-4fe4-951f-8165e1072661
+    linux /boot/vmlinuz-linux root=UUID=44852f37-2ebf-4fe4-951f-8165e1072661 rootfstype=ext4 rw rootflags=rw,noatime,discard,data=ordered cgroup_disable=memory  
+    initrd /boot/intel-ucode.img /boot/initramfs-linux.img
+}
+
+# (1) Windows 7
+menuentry "Windows 7" {
+	set root=(hd0,msdos1)
+	chainloader +1
+	boot
+}
+
+# (2) Arch Linux Fallback
+menuentry "Arch Linux Fallback" {
+    set gfxpayload="keep"
+    search --fs-uuid --no-floppy --set=root --hint-bios=hd0,msdos3 --hint-efi=hd0,msdos3 --hint-baremetal=ahci0,msdos3  44852f37-2ebf-4fe4-951f-8165e1072661
+    linux /boot/vmlinuz-linux root=UUID=44852f37-2ebf-4fe4-951f-8165e1072661 rootfstype=ext4 rw rootflags=rw,noatime,discard,data=ordered cgroup_disable=memory
+    initrd /boot/intel-ucode.img /boot/initramfs-linux-fallback.img
+}
+
+
+if [ "${grub_platform}" == "efi" ]; then
+    
+    ## UEFI Shell 2.0
+    #menuentry "UEFI Shell ${_UEFI_ARCH} v2" {
+    #    search --fs-uuid --no-floppy --set=root  
+    #    chainloader /EFI/tools/shell${_SPEC_UEFI_ARCH}_v2.efi
+    #}
+    
+    ## UEFI Shell 1.0
+    #menuentry "UEFI Shell ${_UEFI_ARCH} v1" {
+    #    search --fs-uuid --no-floppy --set=root  
+    #    chainloader /EFI/tools/shell${_SPEC_UEFI_ARCH}_v1.efi
+    #}
+    
+fi
+
+
+if [ "${grub_platform}" == "efi" ]; then
+    if [ "${grub_cpu}" == "x86_64" ]; then
+        ## Microsoft Windows Vista/7/8 via x86_64 UEFI
+        #menuentry \"Microsoft Windows Vista/7/8 x86_64 UEFI-GPT\" {
+        #    insmod part_gpt
+        #    insmod fat
+        #    insmod search_fs_uuid
+        #    insmod chain
+        #    search --fs-uuid --no-floppy --set=root  
+        #    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+        #}
+    fi
+fi
+
+
+if [ "${grub_platform}" == "pc" ]; then
+    
+    ## Microsoft Windows Vista/7/8 via BIOS
+    #menuentry \"Microsoft Windows Vista/7/8 BIOS-MBR\" {
+    #    insmod part_msdos
+    #    insmod ntfs
+    #    insmod search_fs_uuid
+    #    insmod ntldr
+    #    search --fs-uuid --no-floppy --set=root <FS_UUID of Windows SYSTEM Partition>
+    #    ntldr /bootmgr
+    #}
+    
+    ## Microsoft Windows XP
+    #menuentry \"Microsoft Windows XP\" {
+    #    insmod part_msdos
+    #    insmod ntfs
+    #    insmod search_fs_uuid
+    #    insmod ntldr
+    #    search --fs-uuid --no-floppy --set=root <FS_UUID of Windows SYSTEM Partition>
+    #    ntldr /ntldr
+    #}
+    
+fi
+
