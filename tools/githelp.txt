@@ -42,3 +42,9 @@ Ref: http://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 	git checkout -b dev origin/dev，作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
 	git checkout -b release origin/release，作用参见上一步解释
 	git checkout dev，切换回dev分支，并开始开发。
+
+__________________git time machine.
+git reflog
+git reset --hard <commit_id>
+git reset --hard HEAD^ #last commit verson
+当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作
