@@ -1,0 +1,44 @@
+_________
+archlinux
+sudo pacman -S texlive-fontsextra awesome-terminal-fonts otf-font-awesome texlive-latexextra texlive-core texlive-most ttf-font-awesome
+________________________________________________
+…or create a new repository on the command line
+echo "# resume" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:nwxufo/resume.git
+git push -u origin master
+_____________________________________________________
+…or push an existing repository from the command line
+git remote add origin git@github.com:nwxufo/resume.git
+git push -u origin master
+_______________________________________
+…or import code from another repository
+You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
+
+
+_____________________________
+new branch, push, pull, merge
+	git branch -a
+	git checkout -b centos origin/centos
+	git push origin archlinux:archlinux
+					 local_br:remote_br
+	git push origin archlinux
+	git checkout -b arch origin/arch
+___________________________
+pull all branch
+Ref: http://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
+	git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+	git fetch --all
+	git pull --all
+	===================
+	git如何clone所有的远程分支
+	git clone http://myrepo.xxx.com/project/.git ,这样在git_work目录下得到一个project子目录
+	cd project
+	git branch -a，列出所有分支名称如下：
+	remotes/origin/dev
+	remotes/origin/release
+	git checkout -b dev origin/dev，作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
+	git checkout -b release origin/release，作用参见上一步解释
+	git checkout dev，切换回dev分支，并开始开发。

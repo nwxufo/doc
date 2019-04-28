@@ -1,0 +1,36 @@
+
+yum whatprovides crt1.o
+1.install epol : two kind .
+
+2. install ntfs support
+3. install nvidia driver
+
+
+visudo
+
+yum install epel-release
+yum update
+yum install ntfs-3g
+
+bash /home/milo/Downloads/NVIDIA-Linux-x86_64-410.78.run
+init 3
+---
+rpm  -- import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm  --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+yum -y install kmod-nvidia
+yum -y reinstall kmod-nvidia
+
+
+
+yum search nvidia
+yum remove xorg-x11-drv-nouveau.x86_64
+sudo yum remove xorg-x11-drv-nouveau.x86_64
+
+4. configure vim environment.
+: set nu
+
+
+
+
+
