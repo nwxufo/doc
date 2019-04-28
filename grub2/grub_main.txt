@@ -1,0 +1,37 @@
+grub_main
+=> grub_machine_init => grub_console_init       
+                     => grub_mm_init_region     
+                     => grub_tsc_init           
+=> grub_setcolorstate + grub_printf             
+=> grub_load_config                             
+=> grub_load_modules                            
+=> grub_set_prefix_and_root                     
+=> grub_register_core_commands                  
+=> grub_parser_execute                          
+=> grub_load_normal_mode => grub_dl_load ("normal")   
+                         => grub_command_execute ("normal", 0, 0)   
+
+=================================================================
+normal command execute
+    parse grub.cfg
+	{user operate}
+	reload menu entry script.
+	linux command
+	initrd command
+	boot command 
+						 
+================================================================
+grub_command_list 组织了所有的命令
+
+eg: printf 函数的跟踪。
+
+printf 
+=> grub_xputs (both UserSpace & Grub2)
+   => grub_xputs = grub_xputs_dumb;
+      => grub_putcode_dumb(code,term);
+		|
+		|glyph
+		|
+		|=> grub_console_putchar(...)
+			=> grub_console_putchar_real(...)
+			   => grub_bios_interrput(...)
