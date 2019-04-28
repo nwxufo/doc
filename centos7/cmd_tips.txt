@@ -1,0 +1,12 @@
+1.parameters when linux kernel startup that bootloader passed to.
+	cat /proc/cmdline
+2.`size`:list section sizes and total size of object files or archive files.
+
+================2019.03.19
+bss: Block Started by Symbol
+data: data segment.
+text: code segment/ text segment.
+heap:
+stack: 
+text:
+data:

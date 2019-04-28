@@ -1,0 +1,18 @@
+1. Parameter Alaysis System.
+	--How to defined a paramer's end
+	--The State of Different State of parameter data Struct.
+	--How to know a file's size.
+	
+2. Linker & Loader;
+	--What is a loader? What Does it will do?
+3. about the process of char* argv[]
+4. get the size of file size:
+		FILE *f = fopen(path,"rb");
+		fseeko(f, 0,SEEK_END);
+		off_t = ftello(f);
+
+5.signal(SIGINT,SIG_IGN); 忽略Ctrl + \ 产生的信号。
+
+6. about two grub main entry point problem.
+
+7. parameter between C and assemble. function[about BIOS interrupt] & variable[*bios*]

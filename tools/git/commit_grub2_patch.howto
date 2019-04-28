@@ -1,0 +1,48 @@
+Record HowTo commit my code to Grub2.
+=====================================
+
+1. git clone git://git.savannah.gnu.org/grub.git
+	1.1 git remote
+	1.2 git fetch
+	1.3 git remote -r
+______________________________________________________
+2. git checkout -b optimus-macro-kernel --track master
+create and switch to branch optimus-macro-kernel; 
+This brach set up to track local branch master
+
+2.2 look through what you changed.
+	git status
+	git diff include/grub/kernel.h
+
+	Don't forget email setting:
+	git config user.email
+	git config user.name
+	git config --global user.email "printer_bzu@163.com"
+	git config --global user.name "milo_gxos"
+
+________________
+3. git commit -a
+	3.1
+	I may got the wrong about commit info. so
+	git commit --amend 
+	two dashes.
+	modify the commit info last time.
+
+	3.2 I may want to change author info.
+      git commit --amend --author="Milo WX Niu <mailist1go@gmail.com>"
+______________________
+4. generate path file.
+
+	git format-patch -N
+
+	 其中，N是整数，用来指定我们把最近N次提交做成N个patch。比如当N=1时，就表示把最近一次提交制作成patch。Git会根据提交的log信息来自动命名patch文件。
+	 N也可以是 log 中的ID，表示对ID 之后的commit打成多个patch
+
+____________________
+5. send it by email.
+
+	git send-email --to=grub-devel@gnu.org 补丁文件1 补丁文件2 补丁文件.
+
+____________________
+6. reply corresponding thread.
+git send-email --smtp-server smtp.bobberson.com --smtp-user bob --to torvalds@linux-foundation.org --cc linux-kernel@vger.kernel.org  --in-reply-to CA+55aFzNDTm_O8rGYdNw1S99P06u6EeSdttXBvtURJocQT2O0g@mail.gmail.com --annotate <path_to_msg1>

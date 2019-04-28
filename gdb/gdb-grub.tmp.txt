@@ -1,0 +1,9 @@
+Debug Grub with Qeum KVM
+========================
+
+________________
+1. create debug disk.
+qemu-img create -f raw disk.img 10g
+
+2.
+gdb --args qemu-system-x86_64 -m 1024 -hda test1.qcow2 -cdrom ubuntu-14.04.5-desktop-amd64.iso -boot d --nographic

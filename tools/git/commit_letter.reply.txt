@@ -1,0 +1,30 @@
+Just to remove the common factor: "sizeof (grub_addr_t)"  from the numerator and denominator of the fractional expression of next var. 
+Let me explant it more detail:
+	H: struct grub_module_header ;
+	B: grub_uint32_t ;
+	A: grub_addr_t;
+
+original expression can be expressed as:                     
+	var = (H *)((B*)var) + ( offset_exp ))
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+             ((H*)->size + sizeof(A) - 1)    sizeof(A)  |
+offset_exp = ---------------------------- * ----------- |
+                sizeof(A)                    sizeof(B)  |
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Remove the common factor "sizeof(A)" of fractional offset_exp, we got the result.
+	offset_exp_new = ((H*)->size + sizeof(A) - 1) / sizeof(B)
+                       = ((struct grub_module_header *) var)->size + sizeof (grub_addr_t) -1) / sizeof (grub_uint32_t)
+
+so: 
+var =(H *)((B*)var) + ( ((H*)->size + sizeof(A) - 1) / sizeof(B) ))
+    = (struct grub_module_header *)             \
+      (((grub_uint32_t *) var) + (((struct grub_module_header *) var)->size + sizeof (grub_addr_t) -1) / sizeof (grub_uint32_t)))
+Addtion:
+still, the new offset express is meaningfull:
+	numerator: ((struct grub_module_header *) var)->size + sizeof (grub_addr_t) -1) 
+	          it present the offset value united by byte.
+	denominator: sizeof (grub_uint32_t)
+		it's means "struct grub_module_header" alligned by sizeof(grub_uint32_t)
+
+Please feel free to contact me if you need any further information.

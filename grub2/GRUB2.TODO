@@ -1,0 +1,22 @@
+1. Scheme IDE with emacs
+https://www.jianshu.com/p/8893ff7f80a4
+
+
+2.C IDE with emacs.2.C IDE with emacs.
+http://tuhdo.github.io/c-ide.html
+https://www.emacswiki.org/emacs/CProgrammingLanguage
+
+3
+https://github.com/josephmisiti/awesome-machine-learning
+https://datascience.stackexchange.com/questions/16826/is-there-a-c-library-for-machine-learning-algorithms
+
+4
+about GRUB2
+
+1. Why EFI file is excutable ELF Format.?
+2. grub install boot.img core.img
+3. Why add other section into section .text & .data 
+4. Why kernel.image have both section header and program header.
+5. How compress processing 
+6. about dependent mod.
+congratulations

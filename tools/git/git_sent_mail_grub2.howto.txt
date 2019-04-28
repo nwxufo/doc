@@ -1,0 +1,15 @@
+git config --global user.name "My Name"
+git config --global user.email "myemail@example.com"
+
+git config --global sendemail.smtpencryption tls
+git config --global sendemail.smtpserver mail.messagingengine.com
+git config --global sendemail.smtpuser tanuk@fastmail.fm
+git config --global sendemail.smtpserverport 587
+git config --global sendemail.smtppass hackme
+
+#default address:
+git config sendemail.to pulseaudio-discuss@lists.freedesktop.org
+
+#As default, git send-email add "user.email" Cc:field. To avoid it.
+
+git config --global sendemail.suppresscc self
