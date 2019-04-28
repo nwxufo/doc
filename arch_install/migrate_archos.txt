@@ -28,3 +28,6 @@ Install software that installed in old machine.
 6. enable dhcpcd server. for wired network.
 	sudo systemctl enable dhcpcd@enp2s0
 	sudo systemctl vmware-*.service
+7. close dynamic power manager system for defense auto poweroff displayer.
+	xset -dpms
+	xset s off 
