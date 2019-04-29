@@ -1,0 +1,47 @@
+============terminal 1=====================
+qemu-system-x86_64 -m 2048 -kernel arch/x86/boot/bzImage -gdb tcp::8889 -nographic -serial mon:stdio -append 'console=ttyS0' -S --enable-kvm
+
+REF:
+bzimage --> https://unix.stackexchange.com/questions/5518/what-is-the-difference-between-the-following-kernel-makefile-terms-vmlinux-vml/5602#5602
+
+============terminal 2=====================
+#gdb
+(gdb) add-auto-load-safe-path /home/milo/test/linux-4.19.34/
+(gdb) file /home/milo/test/linux-4.19.34/vmlinux
+Reading symbols from /home/milo/test/linux-4.19.34/vmlinux...done.
+(gdb) directory /home/milo/test/linux-4.19.34/
+Source directories searched: /home/milo/test/linux-4.19.34:$cdir:$cwd
+(gdb) target remote:8889
+Remote debugging using :8889
+0x000000000000fff0 in cpu_hw_events ()
+(gdb) 
+=================configuration=============
+也可以把以上命令保存到当前目录(/home/binss/work/GDB-Kernel/)的.gdbinit中，然后在~/.gdbinit中添加：
+
+add-auto-load-safe-path /home/binss/work/GDB-Kernel/.gdbinit
+
+或者直接添加在~/.gdbinit
+
+==================挂载磁盘==================
+
+前面的指令拉起的VM会挂在initramfs，因为没有指定要挂载的磁盘，可以通过hda挂载已有磁盘并配置root参数，从而成功进入某个虚拟机：
+
+sudo qemu-system-x86_64 -m 2048 -kernel /home/binss/work/KVM-Learning/arch/x86/boot/bzImage -initrd ~/work/initrd.img-4.4.0-66-generic -hda myvm2.img -gdb tcp::8889 -nographic -serial mon:stdio -append 'root=/dev/sda1 console=ttyS0' --enable-kvm
+当然为了加强鲁棒性，建议使用UUID来指定root设备，UUID可以在进入系统后查询/boot/grub/grub.cfg得到。
+
+sudo qemu-system-x86_64 -m 2048 -kernel /home/binss/work/KVM-Learning/arch/x86/boot/bzImage -initrd ~/work/initrd.img-4.4.0-66-generic -hda myvm2.img 
+=====================打断点=================
+然后我们就能够通过函数名进行断点了，比如断在入口：
+hbreak start_kernel
+断点的位置在
+：https://github.com/torvalds/linux/blob/v4.2/init/main.c#L497
+ref:https://stackoverflow.com/questions/18266063/does-kernel-have-main-function/33422401#33422401
+____
+REF:
+https://stackoverflow.com/questions/11408041/how-to-debug-the-linux-kernel-with-gdb-and-qemu
+https://github.com/cirosantilli/linux-kernel-module-cheat/tree/c7bbc6029af7f4fab0a23a380d1607df0b2a3701
+https://github.com/cirosantilli/linux-kernel-module-cheat#myinsmod
+https://wiki.ubuntu.com/Kernel/KernelDebuggingTricks
+https://www.elinux.org/Debugging_The_Linux_Kernel_Using_Gdb
+https://www.phoronix.com/scan.php?page=news_item&px=Linux-4.8-ASLR-Kernel-Mem-Sects
+
