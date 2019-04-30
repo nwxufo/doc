@@ -1,0 +1,16 @@
+
+And put it in a disk image file: 
+"""
+qemu-img create -f raw hda.img 1G
+mkfs.fat hda.img
+sudo mount -o uid=$UID hda.img /mnt
+mkdir -p /mnt/efi/boot/
+mv bootIA32.efi /mnt/efi/boot/
+sudo umount /mnt
+"""
+
+REF:
+https://stackoverflow.com/questions/43872078/debug-grub2-efi-image-running-on-qemu
+http://v3.sk/~lkundrak/grub2-gdb/howto.html
+http://timetobleed.com/how-a-crazy-gnu-assembler-macro-helps-you-debug-grub-with-gdb/
+https://www.gnu.org/software/grub/manual/grub/html_node/debug.html

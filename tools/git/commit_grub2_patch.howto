@@ -46,3 +46,6 @@ ____________________
 ____________________
 6. reply corresponding thread.
 git send-email --smtp-server smtp.bobberson.com --smtp-user bob --to torvalds@linux-foundation.org --cc linux-kernel@vger.kernel.org  --in-reply-to CA+55aFzNDTm_O8rGYdNw1S99P06u6EeSdttXBvtURJocQT2O0g@mail.gmail.com --annotate <path_to_msg1>
+
+REF:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=refs/tags/v4.11-rc4#n460

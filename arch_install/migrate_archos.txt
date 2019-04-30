@@ -31,3 +31,5 @@ Install software that installed in old machine.
 7. close dynamic power manager system for defense auto poweroff displayer.
 	xset -dpms
 	xset s off 
+8. enable service.
+   systemctl --user enable --now emacs
