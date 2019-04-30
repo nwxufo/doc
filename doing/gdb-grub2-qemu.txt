@@ -14,3 +14,5 @@ https://stackoverflow.com/questions/43872078/debug-grub2-efi-image-running-on-qe
 http://v3.sk/~lkundrak/grub2-gdb/howto.html
 http://timetobleed.com/how-a-crazy-gnu-assembler-macro-helps-you-debug-grub-with-gdb/
 https://www.gnu.org/software/grub/manual/grub/html_node/debug.html
+https://stackoverflow.com/questions/12204837/how-to-debug-a-boot-loader
+https://stackoverflow.com/questions/43872078/debug-grub2-efi-image-running-on-qemu

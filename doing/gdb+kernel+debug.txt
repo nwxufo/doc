@@ -44,4 +44,3 @@ https://github.com/cirosantilli/linux-kernel-module-cheat#myinsmod
 https://wiki.ubuntu.com/Kernel/KernelDebuggingTricks
 https://www.elinux.org/Debugging_The_Linux_Kernel_Using_Gdb
 https://www.phoronix.com/scan.php?page=news_item&px=Linux-4.8-ASLR-Kernel-Mem-Sects
-
