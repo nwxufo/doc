@@ -25,7 +25,16 @@ new branch, push, pull, merge
 	git push origin archlinux:archlinux
 					 local_br:remote_br
 	git push origin archlinux
-	git checkout -b arch origin/arch
+        git checkout -b arch origin/arch
+_________________________________________
+pull customed branch from my github Repo.
+     git branch -a
+     git branch <a new branch name, eg dev>
+     git branch --set-upstream-to=origin/dev dev
+     git pull
+     ========>
+     check the relationship between local branch and remote branch.
+     git branch -vv
 ___________________________
 pull all branch
 Ref: http://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
