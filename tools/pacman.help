@@ -1,0 +1,8 @@
+#searching a lib/software according to an error
+for example: stubs-32.h not found.
+
+step1. pacman -Qo /usr/include/gnu/stubs.h
+o: own
+Q: Query
+step2. pacman -Qqs glibc
+       pacman -Sqs glibc
