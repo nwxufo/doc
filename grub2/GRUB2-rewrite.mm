@@ -3,7 +3,7 @@
 <node TEXT="GRUB2" FOLDED="false" ID="ID_228081831" CREATED="1553624785885" MODIFIED="1553624796382" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle" zoom="1.464">
-    <properties fit_to_viewport="false" show_note_icons="true" edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" fit_to_viewport="false"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -63,10 +63,10 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="3" RULE="ON_BRANCH_CREATION"/>
-<node TEXT="UEFI Model" POSITION="right" ID="ID_505352447" CREATED="1553678199283" MODIFIED="1553678335202">
-<edge COLOR="#0000ff"/>
-<richcontent TYPE="NOTE">
+<hook NAME="AutomaticEdgeColor" COUNTER="8" RULE="ON_BRANCH_CREATION"/>
+<node TEXT="Architecture" POSITION="right" ID="ID_1161741782" CREATED="1557389128732" MODIFIED="1557389143384">
+<edge COLOR="#00007c"/>
+<node TEXT="UEFI Model" ID="ID_505352447" CREATED="1553678199283" MODIFIED="1557389103589"><richcontent TYPE="NOTE">
 
 <html>
   <head>
@@ -103,13 +103,15 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
+<node TEXT="graphic flow" FOLDED="true" ID="ID_529711528" CREATED="1557390682028" MODIFIED="1557390693411">
+<node TEXT="UEFI-BOOT.gif" ID="ID_1998300600" CREATED="1557390698614" MODIFIED="1557390698617">
+<hook URI="GRUB2-rewrite_files/UEFI-BOOT.gif" SIZE="0.8450704" NAME="ExternalObject"/>
 </node>
-<node TEXT="Legacy Model.&#xa;Files write to Disk" POSITION="right" ID="ID_1234857502" CREATED="1553624799687" MODIFIED="1553738406803">
-<edge COLOR="#ff0000"/>
-<richcontent TYPE="NOTE">
+</node>
+</node>
+<node TEXT="Legacy Model.&#xa;Files write to Disk" ID="ID_1234857502" CREATED="1553624799687" MODIFIED="1557389106458"><richcontent TYPE="NOTE">
 
 <html>
   <head>
@@ -273,6 +275,24 @@
 </node>
 </node>
 </node>
+<node TEXT="graphic show" FOLDED="true" ID="ID_1109590395" CREATED="1557390504276" MODIFIED="1557390718576">
+<node TEXT="legacy-boot.png" ID="ID_1396380597" CREATED="1557390729113" MODIFIED="1557390729116">
+<hook URI="GRUB2-rewrite_files/legacy-boot.png" SIZE="0.3125" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Utils" POSITION="right" ID="ID_646799103" CREATED="1557389092324" MODIFIED="1557389099296">
+<edge COLOR="#00ffff"/>
+<node TEXT="grub-install.c.mm" ID="ID_1751911553" CREATED="1557389688769" MODIFIED="1557389688769" LINK="GRUB2-rewrite_files/grub-install.c.mm"/>
+<node TEXT="struct argp.mm" ID="ID_313193599" CREATED="1557390217302" MODIFIED="1557390217305" LINK="GRUB2-rewrite_files/struct%20argp.mm"/>
+</node>
+<node TEXT="grub-core" POSITION="right" ID="ID_278572771" CREATED="1557389116500" MODIFIED="1557389340244">
+<edge COLOR="#7c0000"/>
+<node TEXT="grub-corekernmain grub_main(void).mm" ID="ID_1307994347" CREATED="1557389400238" MODIFIED="1557389400240" LINK="GRUB2-rewrite_files/grub-corekernmain%20grub_main(void).mm"/>
+</node>
+<node TEXT="Test &amp; Debug" POSITION="right" ID="ID_1866178952" CREATED="1557389555716" MODIFIED="1557389561807">
+<edge COLOR="#007c00"/>
 </node>
 </node>
 </map>
