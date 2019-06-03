@@ -1,0 +1,37 @@
+./configure --perfix=`pwd`/out --disable-device-mapper 
+grub-install --target=i386-pc
+ make -j $(nproc)
+
+======make a test disk file========
+ dd if=/dev/zero of=debug_grub2_bios.disk bs=1M count=50
+ df -h debug_grub2_bios.disk
+
+=======install grub2 in test disk file=====
+sudo losetup --partscan --find debug_grub2_bios.disk
+sudo mkfs.ext2 /dev/mapper/loop0p1 
+sudo losetup -d /dev/loop0
+
+grub-install --target=i386-pc debug_grub2_bios.disk
+===================================================
+
+如果只需要调试主逻辑或者ISO，制作ISO文件,
+https://www.gnu.org/software/grub/manual/grub/grub.html#Making-a-GRUB-bootable-CD_002dROM
+
+======== DEBUG FILE USED FOR GDB--=============
+`make -d boot.image` showing the process of compile and link needed file .
+ 
+
+====>terminal one
+handisk file test:
+qemu-system-x86_64 -m 64 -hda debug_grub2_bios.disk -gdb tcp::6633 -nographic -serial mon:stdio  -S
+
+iso test:
+qemu-system-x86_64 -m 64m -cdrom grub.iso -gdb tcp::6633 -nographic -serial mon:stdio  -S
+__________
+help info:
+-serial mon:stdio redirect the serial port to char deice 'mon:stdio'
+-S freeze CPU at startup ( use 'c' to start execution ).
+
+====>terminal two
+$ gdb
+(gdb) target remote:6633

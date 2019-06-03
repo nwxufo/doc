@@ -1,0 +1,8 @@
+
+=======Ref======
+LSM: Prepare for explict LSM ordering
+https://lwn.net/Articles/764880/
+
+kernel Parameter when boot
+https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt
+https://www.kernel.org/doc/html/v4.14/admin-guide/kernel-parameters.html

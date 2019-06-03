@@ -289,7 +289,7 @@
 </node>
 <node TEXT="grub-install.c.mm" ID="ID_1751911553" CREATED="1557389688769" MODIFIED="1557389688769" LINK="GRUB2-rewrite_files/grub-install.c.mm"/>
 </node>
-<node TEXT="grub-core" FOLDED="true" POSITION="right" ID="ID_278572771" CREATED="1557389116500" MODIFIED="1557389340244">
+<node TEXT="grub-core" POSITION="right" ID="ID_278572771" CREATED="1557389116500" MODIFIED="1557389340244">
 <edge COLOR="#7c0000"/>
 <node TEXT="grub-corekernmain grub_main(void).mm" ID="ID_1307994347" CREATED="1557389400238" MODIFIED="1557389400240" LINK="GRUB2-rewrite_files/grub-corekernmain%20grub_main(void).mm"/>
 </node>

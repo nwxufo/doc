@@ -30,6 +30,9 @@ Install software that installed in old machine.
 	sudo systemctl vmware-*.service
 7. close dynamic power manager system for defense auto poweroff displayer.
 	xset -dpms
-	xset s off 
+	xset s off
+        xset -display :0.0 dpms force on
+        xset s off
+        xset dpms 0 0 0
 8. enable service.
    systemctl --user enable --now emacs

@@ -1,0 +1,70 @@
+1.ELF
+        Executable and Linkable Format.
+        defines the structure for binaries, libaries, and core files.(core dump).
+        The ELF's specification of OS allows the operating to interpreter its underlying machine instructions correctly.
+        are typically the out put of a compiler or linker and are a binary format.
+        It can be analyzed by binutils.
+1.1
+        benefit
+        learning anything would be benifit....
+1.2
+        information:
+        `readefl -h a.out` or `hexdump -C -n 64 a.out` for binary detail.
+        1.Magic Number + class
+        2. Data + Version
+        3. OS/ABI + Version
+        4. Type:[CORE/DYN/EXEC/REL/]
+           CORE (value 4)
+           DYN (Shared object file), for libraries (value 3)
+           EXEC (Executable file), for binaries (value 2)
+           REL (Relocatable file), before linked into an executable file (value 1)
+        5. Machine + Version
+        6. Entry point address.
+        7. Strat of / Size of / Number of program headers
+        8. start of / Size of / Number of section headers
+        9. Flags
+        10. Size of this headers.
+2. Besides the ELF header.
+   Part1. Program Headers or Segments
+          `readelf -l a.ou`
+          zero or more segments conclued.
+          desrcibe how to create a process/memory image for runtime execution.
+          When kernel sees these segments, it uses them to map them into memory, using the mmap(2) system call. It's means it coverts predefined instructions into a memory image. If your ELF file is normal binary, it requires these program header, Otherwise, it simply won't run. It uses these headers, with the underlying data structure, to form a process. This process is similar for shared libraries. for operation: using `strace ./a.out`
+
+   Part2. Section Headers or Sections
+          an overview for linking and relocation
+          `readelf -S a.out`
+          0 or more sections. Four main sections(`objdump -h a.out`):
+                    .text  -> excutable code
+                    .data  -> Initialized data with read/write access rights.
+                    .rodata -> Initialized data, read only. (A)
+                    .bss    -> Uniitialized data, able to read/write. (WA)
+   Section Group
+   `readelf -g a.out `
+    some sections can be grouped.
+   Part3. Data
+   --->
+   Two complementary 'views'
+       ㈠ Used for the linker to allow excution(segments).
+       ㈡ Used for categorizing instructions and data (sections)
+   
+_______
+It can be find by `readelf -a |grep GNU`
+   GNU_EH_FRAME
+        a sorted queue used by gcc. It stores exception handlers. So when something goes wrong, it can use this area to deal correctly with it.
+    GNU_STACK
+        used to store stack information. It's a buffer, or scratch place, where items are stored, like local variables. This will occur with LIFO(Last In, First Out), similar to putting boxes on to of each other. When a process function is started a block is reserved. When the function is finished, it will be marked as free again.
+
+____
+tools:
+pacman -S pax-utils elfutils
+Ref: https://www.mankier.com/package/pax-utils
+sudo pacman -S paxtest
+AUR packages: execstack
+https://linux.die.net/man/8/execstack
+elfkickers
+radare2
+
+Ref:
+http://www.skyfree.org/linux/references/ELF_Format.pdf
+http://www.skyfree.org/linux/references/references.html

@@ -1,0 +1,5 @@
+searching package by command:
+          $pkgfile execstack.
+
+or:
+        pacman -Fs execstack

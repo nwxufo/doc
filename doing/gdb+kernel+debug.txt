@@ -14,6 +14,7 @@
 	boot param without quite & splash。
 
 2. configuration befor debug kernel with gdb and qemu
+        #Make sure you have no stale .o files and dependencies lying around:
 	make mrproper
 	make x86_64_defconfig
 
@@ -29,7 +30,7 @@
 
 	make -j $(nproc)
 ============terminal 1=====================
-qemu-system-x86_64 -m 2048 -kernel arch/x86/boot/bzImage -gdb tcp::8889 -nographic -serial mon:stdio -append 'console=ttyS0' -S --enable-kvm
+qemu-system-x86_64 -m 2048 -kernel arch/x86/boot/bzImage -gdb tcp::6633 -nographic -serial mon:stdio -append 'console=ttyS0' -S --enable-kvm
 
 REF:
 bzimage --> https://unix.stackexchange.com/questions/5518/what-is-the-difference-between-the-following-kernel-makefile-terms-vmlinux-vml/5602#5602
@@ -41,8 +42,8 @@ bzimage --> https://unix.stackexchange.com/questions/5518/what-is-the-difference
 Reading symbols from /home/milo/test/linux-4.19.34/vmlinux...done.
 (gdb) directory /home/milo/test/linux-4.19.34/
 Source directories searched: /home/milo/test/linux-4.19.34:$cdir:$cwd
-(gdb) target remote:8889
-Remote debugging using :8889
+(gdb) target remote:6633
+Remote debugging using :6633
 0x000000000000fff0 in cpu_hw_events ()
 (gdb) 
 =================configuration=============

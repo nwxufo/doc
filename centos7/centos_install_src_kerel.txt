@@ -1,0 +1,17 @@
+1. dafualt kernel src version that we can install is 3.10, It's too old,
+   so enhacne the repository
+   '''
+   # rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+   # rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+   '''
+
+   onece the repository has been enable, you can use the following cmd to list the availiable kernel.related package.
+   '''
+   yum --disablerepo="*" --enablerepo="elrepo-kernel" list available
+   '''
+   
+   yum install kernel-lt-devel --enablerepo="elrepo-kernel"
+
+
+Ref
+http://elrepo.org/tiki/tiki-index.php
