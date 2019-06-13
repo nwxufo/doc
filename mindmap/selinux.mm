@@ -112,7 +112,7 @@
 <node TEXT="SELinux Under standard Linux Discretionary Access Control DAC," ID="ID_1241058681" CREATED="1558605862150" MODIFIED="1559181249154"/>
 <node TEXT="Question: UID vs SUID" ID="ID_603606474" CREATED="1558605921510" MODIFIED="1558605945842"/>
 </node>
-<node TEXT="Decision Making Process" FOLDED="true" POSITION="right" ID="ID_79927885" CREATED="1558606958438" MODIFIED="1558606968394">
+<node TEXT="Decision Making Process" POSITION="right" ID="ID_79927885" CREATED="1558606958438" MODIFIED="1558606968394">
 <edge COLOR="#0000ff"/>
 <node TEXT="SELinux_Decision_Making_Process.png" ID="ID_154165518" CREATED="1558607016351" MODIFIED="1558607016351">
 <hook URI="selinux_files/SELinux_Decision_Making_Process.png" SIZE="1.0" NAME="ExternalObject"/>
@@ -143,7 +143,7 @@
 </richcontent>
 </node>
 </node>
-<node TEXT="The SELinux Pseudo  System" FOLDED="true" POSITION="right" ID="ID_1388928703" CREATED="1558607524446" MODIFIED="1558607546763">
+<node TEXT="The SELinux Pseudo  System" POSITION="right" ID="ID_1388928703" CREATED="1558607524446" MODIFIED="1558607546763">
 <edge COLOR="#ff00ff"/>
 <node TEXT="/selinux/" ID="ID_189729016" CREATED="1558607550870" MODIFIED="1558663938582"><richcontent TYPE="NOTE">
 
@@ -218,19 +218,19 @@
 <node TEXT="It&apos;s an implementation of the Flask operating system security architecture." ID="ID_1390589907" CREATED="1559123248516" MODIFIED="1559123318904"/>
 <node TEXT="SELinux motivated the creation of LSM" ID="ID_1378808387" CREATED="1559123401236" MODIFIED="1559123411868"/>
 <node TEXT="development of SELinux" FOLDED="true" ID="ID_1127248700" CREATED="1559123660467" MODIFIED="1559123678655">
-<node TEXT="Implementation used persistent security IDs (PSIDs) stored in an unused field of the ext2 inode." ID="ID_1932476879" CREATED="1559123434564" MODIFIED="1559123659583">
+<node TEXT="Implementation used persistent security IDs (PSIDs) stored in an unused field of the ext2 inode." FOLDED="true" ID="ID_1932476879" CREATED="1559123434564" MODIFIED="1559123659583">
 <node TEXT="used persistent security IDs (PSIDs) stored in an unused filed of the ext2 inode." ID="ID_40088853" CREATED="1559124273588" MODIFIED="1559124377863">
 <node TEXT="this required modifying ech file system type to support PSIDs, NOT scalable" ID="ID_590703998" CREATED="1559124395691" MODIFIED="1559124443784"/>
 </node>
 </node>
-<node TEXT="SELinux was a loadable kernel module for the 2.4.&lt;x&gt; series of Linux Kernels." ID="ID_1009352258" CREATED="1559123957915" MODIFIED="1559124033415">
+<node TEXT="SELinux was a loadable kernel module for the 2.4.&lt;x&gt; series of Linux Kernels." FOLDED="true" ID="ID_1009352258" CREATED="1559123957915" MODIFIED="1559124033415">
 <node TEXT="stored PSIDs in a normal file," ID="ID_1172621709" CREATED="1559124034924" MODIFIED="1559124059687"/>
 <node TEXT="able to support more file systems" ID="ID_1519413066" CREATED="1559124060019" MODIFIED="1559124078583"/>
 <node TEXT="no optimal for performance" ID="ID_30495084" CREATED="1559123701538" MODIFIED="1559123711792"/>
 <node TEXT="inconsistent across platforms" ID="ID_60259026" CREATED="1559123712115" MODIFIED="1559123728615"/>
 <node TEXT="was integrated upstream to the 2.6.x kernel" ID="ID_758667171" CREATED="1559123729228" MODIFIED="1559123802559">
 <node TEXT="support for LSM" ID="ID_89388106" CREATED="1559123823468" MODIFIED="1559123834815"/>
-<node TEXT="has extended attributes (xattrs) in the ext3 file system" ID="ID_756652721" CREATED="1559123835627" MODIFIED="1559124179498"><richcontent TYPE="NOTE">
+<node TEXT="has extended attributes (xattrs) in the ext3 file system:/proc/pid/attr/" ID="ID_756652721" CREATED="1559123835627" MODIFIED="1559553736448"><richcontent TYPE="NOTE">
 
 <html>
   <head>
@@ -242,7 +242,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -281,7 +280,7 @@
 <node TEXT="PostgreSQL" ID="ID_457885375" CREATED="1558937579101" MODIFIED="1558937586145"/>
 <node TEXT="Apache/SELinux-aware capabilities" ID="ID_1545689641" CREATED="1558937586581" MODIFIED="1558937603513"/>
 </node>
-<node TEXT="about Policy" FOLDED="true" ID="ID_1019152407" CREATED="1558937536750" MODIFIED="1558937641441">
+<node TEXT="about Policy" ID="ID_1019152407" CREATED="1558937536750" MODIFIED="1558937641441">
 <node TEXT="The core SELinux kernel policy language and how basic policy modules can be constructed for instructional purposes" ID="ID_161110449" CREATED="1558937643637" MODIFIED="1558937672653"/>
 <node TEXT="Common Intermediate Language implementation" ID="ID_1911400533" CREATED="1558937686629" MODIFIED="1558937710009"/>
 <node TEXT="The core SELinux policy management tools" ID="ID_697483099" CREATED="1558937733517" MODIFIED="1558937748465"/>
@@ -290,11 +289,14 @@
 </node>
 <node TEXT="relating to Android-SE for Android" ID="ID_633460281" CREATED="1558937899668" MODIFIED="1558937928496"/>
 </node>
-<node TEXT="" POSITION="left" ID="ID_251481780" CREATED="1559181252363" MODIFIED="1559181252364">
+<node TEXT="implemention of BIBA" POSITION="left" ID="ID_251481780" CREATED="1559181252363" MODIFIED="1560132718393">
 <edge COLOR="#007c7c"/>
+<node TEXT="RatHat PitBull &#x4ed8;&#x8d39;" ID="ID_1630762293" CREATED="1560132720698" MODIFIED="1560132848114"/>
+<node TEXT="FreeBSD &#x5185;&#x6838;&#x5b9e;&#x73b0;" ID="ID_294333329" CREATED="1560132855451" MODIFIED="1560132871617"/>
 </node>
-<node TEXT="" POSITION="left" ID="ID_1938849543" CREATED="1559181259491" MODIFIED="1559181259492">
+<node TEXT="NOT understand Conception relating to SELinux" POSITION="left" ID="ID_1938849543" CREATED="1559181259491" MODIFIED="1560136123203">
 <edge COLOR="#7c7c00"/>
+<node TEXT="CIPSO IP option" ID="ID_34283645" CREATED="1560136125467" MODIFIED="1560136161939" LINK="https://lwn.net/Articles/204905/"/>
 </node>
 <node TEXT="Multi-Category Security (MCS)" POSITION="right" ID="ID_137686043" CREATED="1559181262193" MODIFIED="1559183111935">
 <edge COLOR="#ff0000"/>
@@ -322,7 +324,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Overview" ID="ID_843196213" CREATED="1559200354210" MODIFIED="1559200358550">
 <node TEXT="refers to the same non-hierarchical categories" ID="ID_957441580" CREATED="1559181309041" MODIFIED="1559183138391"/>
@@ -330,13 +331,82 @@
 <node TEXT="These Security Levels consist of a hierarchical  sensitivity value  and zero or more non-hierarchical categories (such as &quot;Crypto&quot;)." ID="ID_467717775" CREATED="1559183186315" MODIFIED="1559183352727"/>
 </node>
 <node TEXT="Categories provide compartment within sensitivity levels and enforce the need-to-know security principle" ID="ID_696317547" CREATED="1559183360411" MODIFIED="1559183533879"/>
-<node TEXT="SELinux Security Contexts" FOLDED="true" ID="ID_907668081" CREATED="1559184173459" MODIFIED="1559184188218">
+<node TEXT="SELinux Security Contexts" ID="ID_907668081" CREATED="1559184173459" MODIFIED="1559184188218">
 <node TEXT="stores security contexts as an extended attribute of a file." ID="ID_1067507090" CREATED="1559184190355" MODIFIED="1559184213407"/>
-<node TEXT="The &quot;security&quot; namespace is used for security modules,&#xa;the &quot;security.selinux&quot; name is used to persistently store SELinux security labels on files." FOLDED="true" ID="ID_632478565" CREATED="1559184213707" MODIFIED="1559184636679">
+<node TEXT="The &quot;security&quot; namespace is used for security modules,&#xa;the &quot;security.selinux&quot; name is used to persistently store SELinux security labels on files." ID="ID_632478565" CREATED="1559184213707" MODIFIED="1559184636679">
 <node TEXT="The contest of this attribute will vary depending on the file or directory you inspect and the policy the machine is enforcing." ID="ID_1165618726" CREATED="1559184638339" MODIFIED="1559184688567"/>
 </node>
 <node TEXT="ls -Z&#xa;-Z: print security context of each file" ID="ID_23119066" CREATED="1559184913867" MODIFIED="1559184944638"/>
 <node TEXT="# getfattr -n security.selinux gravityControl.txt&#xa;# file: gravityControl.txt&#xa;security.selinux=&quot;user_u:object_r:tmp_t:s0:c10\000&quot;&#xa;---------------------------------------------------------------------&#xa;the internal category value is c10&#xa;getfattr: get (extended) attributes of file system objects" ID="ID_890884217" CREATED="1559185291867" MODIFIED="1559185531227"/>
+</node>
+<node TEXT="SLEinux Security Contexts 2" ID="ID_637121328" CREATED="1559698481504" MODIFIED="1559698499214">
+<node TEXT="role" ID="ID_861722540" CREATED="1559698517270" MODIFIED="1559698992104"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Part of&#160;&#160;SELinux is the Role-Based Acess Control (RBAC) security model.
+    </p>
+    <p>
+      SELinux users are authorized for roles, and roles are authorized for domains.
+    </p>
+    <p>
+      The role serves as an intermediary between domains an SELinux user.
+    </p>
+    <p>
+      The roles that can be entered determine which domains can be entered.
+    </p>
+    <p>
+      Ultimately this controls which object types can be accessed. This helps reduce vulnerability to privilege escalation attacks.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="type" ID="ID_98029056" CREATED="1559698526230" MODIFIED="1559699346014"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The type is an attribute of type Enforcement.
+    </p>
+    <p>
+      The type defines a domain for processes, and a type for files.
+    </p>
+    <p>
+      SELinux policy rules define how types can access each other, whether it be a domain accessing a type, or a domain accessing another domain. Access is only allowed if a specific SELinux policy rules exists that allows it.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="level" ID="ID_566905591" CREATED="1559699220534" MODIFIED="1559699222338">
+<node TEXT="The level is an attribute of MLS and MCS." ID="ID_1704386883" CREATED="1560146215338" MODIFIED="1560146248520">
+<node TEXT="An MLS is a pair of levels, written as lowlevel-hightlevel if the levels differ, or lowlevel if the levels are idential (s0-s0 is the same as s0) s stand for sensitivity" ID="ID_1270779214" CREATED="1560146249451" MODIFIED="1560146325255"/>
+</node>
+<node TEXT="Each level is a sensitivity-category pair, with categories being optional.&#xa;If there are categories, the level is written as sensitivity:category-set. If there are no categories, it is written as sensitivity." ID="ID_290775056" CREATED="1560146330721" MODIFIED="1560146498068"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Understanding this corresponding to configure file: /etc/selinux/targeted/setrans.conf
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node TEXT="How_does_a_process_get_into_a_certain_context" ID="ID_1919426332" CREATED="1560146076920" MODIFIED="1560146125256" LINK="https://wiki.gentoo.org/wiki/SELinux/Tutorials/How_does_a_process_get_into_a_certain_context"/>
 </node>
 </node>
 <node TEXT="using MCS lables to extend the Mandatory Access Control (MAC) capabilities of SELinux." ID="ID_1359173566" CREATED="1559200393459" MODIFIED="1559200566990">
@@ -355,12 +425,11 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="simple principle: to access a file, a user needs to  be assigned to all the categories with which the file is labled." ID="ID_1377086367" CREATED="1559203064299" MODIFIED="1559203141171"/>
 <node TEXT="MCS check is applied after normal Linux Discretionary Access Control and Type Enforcement rules, so it can only further restrict security." ID="ID_511446562" CREATED="1559203141546" MODIFIED="1559203191551"/>
 </node>
-<node TEXT="SELinux user identities compared with Standard Linux User Identities" ID="ID_1233110419" CREATED="1559200602403" MODIFIED="1559203246782">
+<node TEXT="SELinux user identities compared with Standard Linux User Identities" FOLDED="true" ID="ID_1233110419" CREATED="1559200602403" MODIFIED="1559203246782">
 <node TEXT="system_u ---- System processes" ID="ID_1062673153" CREATED="1559203248731" MODIFIED="1559203272100"/>
 <node TEXT="root ---- System administrator" ID="ID_1360827631" CREATED="1559203272515" MODIFIED="1559203284002"/>
 <node TEXT="user_u ---- All login users" ID="ID_931861216" CREATED="1559203287250" MODIFIED="1559203301037"/>
@@ -393,7 +462,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="semanage login -l" ID="ID_1659995224" CREATED="1559205556137" MODIFIED="1559205699044"/>
@@ -420,7 +488,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="/etc/selinux/&lt;selinuxtype&gt;/setrans.conf" ID="ID_1762289850" CREATED="1559209352443" MODIFIED="1559209363598"/>
 <node TEXT="chat -L" ID="ID_1298040720" CREATED="1559209335322" MODIFIED="1559209341646"/>
@@ -446,7 +513,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>

@@ -1,0 +1,27 @@
+ruid: real user id
+euid: effective user id
+	eg: 
+	 § ls -la /bin/passwd 
+	 -rwsr-xr-x 1 root root 55448 Apr  4 04:33 /bin/passwd
+	 地一个‘-’代表file, 若可能，s: socket; c: char device; b: block device;p: pipe file; l linker lable.
+	 passwd 的effective uid = 0
+suid: saved user id
+fuid: file system user id
+set-user-id: set user ID bit 除了rwx之外的s标志位.
+					SUID: 4  -->chmod u+s test  或者 chmod 
+				    SGID: 2  -->chmod g+s test  或者 chmod 2777 test
+	Sticky Bit -->	SBIT: 1  -->在具有SBIT标志文件夹下（/tmp）有效，chmod  o+t test 或者chmod
+___________________________________________
+operation:
+1.	ps -ax -o ruid -o euid -o suid -o fuid -o pid -o fname 
+2.  cat /proc/<pid>/status |grep id
+3. 进程的SELinux相关信息
+	ps -eZ
+4.查询整个系统的 SUID/SGID 的文件
+	  find / -perm /6000 
+---------------
+Reference:
+https://blog.csdn.net/nirendao/article/details/79250558
+man setuid
+man getuid
+man geteuid

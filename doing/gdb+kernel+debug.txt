@@ -27,7 +27,17 @@
 	EOF
 
 	./scripts/kconfig/merge_config.sh .config .config-fragment
-
+3. gdb : optimized out proplem when print variable.
+	make menuconfig
+	search key word "optimize"  setting GCC optimization to n to avoiding those problem.
+	 Location:                                                                                                                                                           │  
+	   │     -> General setup                                                                                                                                                  │  
+	     │ (1)   -> Compiler optimization level
+	ref: https://lkml.org/lkml/2010/11/28/211
+	如果删除不干净，直接编辑Makefile，删除-O* 的compiler FLAG. 编译出错，
+	删除.config 中的compiler optimize option后，执行make命令，要求必须compiler optimization 二选一，： optimize for size; optimize for performance.
+	test failed. You MUST compile  kerenel code with optimize option:  https://lists.kernelnewbies.org/pipermail/kernelnewbies/2016-August/016689.html
+4.
 	make -j $(nproc)
 ============terminal 1=====================
 qemu-system-x86_64 -m 2048 -kernel arch/x86/boot/bzImage -gdb tcp::6633 -nographic -serial mon:stdio -append 'console=ttyS0' -S --enable-kvm
@@ -64,6 +74,7 @@ sudo qemu-system-x86_64 -m 2048 -kernel /home/binss/work/KVM-Learning/arch/x86/b
 =====================打断点=================
 然后我们就能够通过函数名进行断点了，比如断在入口：
 hbreak start_kernel
+hbreak security_init
 断点的位置在
 ：https://github.com/torvalds/linux/blob/v4.2/init/main.c#L497
 ref:https://stackoverflow.com/questions/18266063/does-kernel-have-main-function/33422401#33422401
@@ -75,3 +86,11 @@ https://github.com/cirosantilli/linux-kernel-module-cheat#myinsmod
 https://wiki.ubuntu.com/Kernel/KernelDebuggingTricks
 https://www.elinux.org/Debugging_The_Linux_Kernel_Using_Gdb
 https://www.phoronix.com/scan.php?page=news_item&px=Linux-4.8-ASLR-Kernel-Mem-Sects
+
+system.map vs /proc/kallsysms
+/proc/kallsysms have symbols of dynamically loaded modules as well static code and system.map is symbol tables of only static code.
+You can not be really sure if system.map will be available on your system. When kernel and system.map mismatch you keep seeing System.map does not match actual kernel warning. So in that case/proc/kallsyms is the symbols of running kernel.
+System.map isn't just useful for debugging kernel oopses. A few drivers need System.map to resolve symbols since they're linked against kernel headers instead of glibc). They won't work correctly without the System.map for the particular kernel currently running.
+/proc/kallsysms have symbols of dynamically loaded modules as well static code and system.map is symbol tables of only static code.
+https://stackoverflow.com/questions/28936630/system-map-file-and-proc-kallsyms
+https://stackoverflow.com/questions/28936630/system-map-file-and-proc-kallsyms

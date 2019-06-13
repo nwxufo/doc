@@ -1,4 +1,5 @@
 
+
 =======Ref======
 LSM: Prepare for explict LSM ordering
 https://lwn.net/Articles/764880/
@@ -6,3 +7,11 @@ https://lwn.net/Articles/764880/
 kernel Parameter when boot
 https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt
 https://www.kernel.org/doc/html/v4.14/admin-guide/kernel-parameters.html
+
+Lists of system call
+man syscall
+man syscalls
+https://filippo.io/linux-syscall-table/
+http://asm.sourceforge.net/syscall.html
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/syscalls.h?id=HEAD
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/syscalls.h?id=HEAD
