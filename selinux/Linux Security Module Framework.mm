@@ -3,7 +3,7 @@
 <node TEXT="Linux Security Module Framework" FOLDED="false" ID="ID_1871312197" CREATED="1560221421528" MODIFIED="1560221738592" LINK="../PDF/Linux-Security-Module_Paper.pdf" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_note_icons="true"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" fit_to_viewport="false"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -102,7 +102,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Task Hooks" ID="ID_150783890" CREATED="1560224223186" MODIFIED="1560303445241"><richcontent TYPE="NOTE">
 
@@ -122,7 +121,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="task_structure" ID="ID_1565042757" CREATED="1560308142884" MODIFIED="1560308151888">
 <font BOLD="true" ITALIC="true"/>
@@ -141,7 +139,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="Interprocess signalling" ID="ID_253449155" CREATED="1560303543301" MODIFIED="1560303552010"/>
@@ -160,7 +157,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="alloc_security() task hook" ID="ID_338928610" CREATED="1560304068228" MODIFIED="1560304105552"><richcontent TYPE="NOTE">
@@ -175,7 +171,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -207,7 +202,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="binprm_security_ops" ID="ID_1360392601" CREATED="1560308158324" MODIFIED="1560308212401">
@@ -224,7 +218,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="Requirement: Many security models , including Linux capabilities, require the ability to change privileges when a new program is executed." FOLDED="true" ID="ID_1628160304" CREATED="1560308260532" MODIFIED="1560308744738">
@@ -252,7 +245,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="free_Security()" ID="ID_180877014" CREATED="1560309724124" MODIFIED="1560309842374"><richcontent TYPE="NOTE">
@@ -270,13 +262,67 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
 </node>
-<node TEXT="File System Hooks" ID="ID_186039841" CREATED="1560224241496" MODIFIED="1560224257292">
-<node TEXT="Super Block Hooks" ID="ID_905461215" CREATED="1560224300776" MODIFIED="1560224306140"/>
+<node TEXT="File System Hooks" ID="ID_186039841" CREATED="1560224241496" MODIFIED="1560313485856"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#160;The VFS layer defines three primary objects which encapsulate the interface that low level file systems are developed against:
+    </p>
+    <p>
+      <b><i>super_block </i></b>
+    </p>
+    <p>
+      <b><i>inode </i></b>
+    </p>
+    <p>
+      <b><i>file </i></b>
+    </p>
+    <p>
+      Each of these objects contains a set of operations that define the interface between the VFS and the&#160;&#160;actual file system.
+    </p>
+    <p>
+      This interface is a perfect place for LSM to mediate file system access.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Super Block Hooks" ID="ID_905461215" CREATED="1560224300776" MODIFIED="1560313823993"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The kernel's super_block structure represents a file system. This structure is used when mounting and unmounting a file system for obtaining file system statistics,
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="super_bloc_security_ops" ID="ID_1945989990" CREATED="1560313832612" MODIFIED="1560313903311"><richcontent TYPE="NOTE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      meidate the various actions that can be taken on a <b><i>super_block</i></b>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="eg: statfs() super block hook checks permission when a task attempts to obtain a file system&apos;s statistics." ID="ID_629100968" CREATED="1560313922468" MODIFIED="1560313969663"/>
+</node>
+</node>
 <node TEXT="Inode Hooks" ID="ID_409682162" CREATED="1560224257912" MODIFIED="1560224271668"/>
 <node TEXT="File Hooks" ID="ID_710631846" CREATED="1560224281968" MODIFIED="1560224285108"/>
 </node>

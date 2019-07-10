@@ -1,0 +1,7 @@
+# 3288系统
+gx-cloudsuit
+connector-ysapi
+原本为辛力的工作，交接给姚嘉伟，由姚嘉伟交接给我
+通过Android_tools 烧写机器镜像代码，更详细的文档没有给出，可以通过，mount rootfs.img 进行修改，代码是开机后的桌面和设置程序，编译方式即在目录下make.
+
+辛力的工作目录被我拷贝在/dev/sda1 cloud-desktop-xinli 目录下

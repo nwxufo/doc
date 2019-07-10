@@ -1,0 +1,9 @@
+Where find the syscall table for Linux?
+	1. find / -name syscalls -type d
+	As a programmer, We written code oriented to compiler, SO it useful to ask the compiler directly.
+	 `printf "#include <sys/syscall.h>\nSYS_read" | gcc -E -`
+	 for  32-bit x86
+     `printf "#include <sys/syscall.h>\nSYS_read" | gcc -m32 -E -`
+Maybe I want to output to the terminal the value of some global/standard definitions of C/GCC,
+	`echo __GNUC__ | gcc -E -`
+	`echo -n "#include <stdlib.h>\n errno" | gcc -E -`

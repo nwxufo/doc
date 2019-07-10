@@ -1,0 +1,8 @@
+UART
+	Universal Asynchronous Receiver and Transmitter.
+USB
+	Universal Serical Bus
+COM
+	eg: RS-232
+USART 
+	Universal Synchronous/Asynchronous Receiver/Transmitter.

@@ -16,8 +16,6 @@ git push -u origin master
 _______________________________________
 …or import code from another repository
 You can initialize this repository with code from a Subversion, Mercurial, or TFS project.
-
-
 _____________________________
 new branch, push, pull, merge
 	git branch -a
@@ -51,6 +49,8 @@ Ref: http://stackoverflow.com/questions/10312521/how-to-fetch-all-git-branches
 	git checkout -b dev origin/dev，作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
 	git checkout -b release origin/release，作用参见上一步解释
 	git checkout dev，切换回dev分支，并开始开发。
+	verify:
+		git branch -vv
 
 __________________git time machine.
 git reflog

@@ -1,0 +1,21 @@
+00. About this file.
+	Three part planned:
+		1. TODO this DOc
+		2. TODO doc
+		3. explanation about my Doc.
+#TODO about this Doc.
+	1. every doc's summary in the Document.
+	2. Organization in my doc way.
+#TODO to do some doc
+	1. BLOG doc. I really need to DOC my BLOG doc, 3 years ago, and 2 mounths ago, I rebuild my work both. But both forgotted!
+
+My Doc way
+1. words.txt
+	some words' explanation , so I can understand some kind conception easily.
+2. *.mm file
+	Mindmap file created by freeplane currently.
+	Originazation of My Documentation of a 'directory' topic.
+3. PDF directory
+	Tod store some kind pdf resources that indexed by my mind map, It be ignored in my .gitignore file , so it couldn't be sync to my github count.
+4. RE*.mm file
+	This file not exit for now, It's a MAYBE review for my work after I get something from my old work.
