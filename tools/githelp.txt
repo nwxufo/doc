@@ -57,3 +57,7 @@ git reflog
 git reset --hard <commit_id>
 git reset --hard HEAD^ #last commit verson
 当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作
+
+____________________Github delete histroy commit totally .
+git reset --hard HEAD^ 
+git push --force

@@ -1,9 +1,9 @@
 <map version="freeplane 1.7.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="MyWebsit" FOLDED="false" ID="ID_1016524144" CREATED="1556015287699" MODIFIED="1556015296926" STYLE="oval">
+<node TEXT="MyWebsit" FOLDED="false" ID="ID_1016524144" CREATED="1556015287699" MODIFIED="1562812652952" STYLE="oval">
 <font SIZE="18"/>
 <hook NAME="MapStyle">
-    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" fit_to_viewport="false" show_note_icons="true"/>
+    <properties edgeColorConfiguration="#808080ff,#ff0000ff,#0000ffff,#00ff00ff,#ff00ffff,#00ffffff,#7c0000ff,#00007cff,#007c00ff,#7c007cff,#007c7cff,#7c7c00ff" show_note_icons="true" fit_to_viewport="false"/>
 
 <map_styles>
 <stylenode LOCALIZED_TEXT="styles.root_node" STYLE="oval" UNIFORM_SHAPE="true" VGAP_QUANTITY="24.0 pt">
@@ -66,11 +66,13 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="3" RULE="ON_BRANCH_CREATION"/>
 <node TEXT="Make it work for you Document" POSITION="right" ID="ID_1037017327" CREATED="1556015300943" MODIFIED="1556015317043">
 <edge COLOR="#ff0000"/>
-<node TEXT="pelican" ID="ID_1406594310" CREATED="1556015318583" MODIFIED="1556015323515"/>
+<node TEXT="pelican" ID="ID_1406594310" CREATED="1556015318583" MODIFIED="1556015323515">
+<node TEXT="theme: elegant" ID="ID_1448650786" CREATED="1562813706156" MODIFIED="1562813712219"/>
+</node>
 <node TEXT="jupter" ID="ID_828440716" CREATED="1556015323863" MODIFIED="1556015331916"/>
 <node TEXT="elegant" ID="ID_463762644" CREATED="1556015332471" MODIFIED="1556015337420"/>
 </node>
-<node TEXT="" POSITION="left" ID="ID_1838564308" CREATED="1556015349759" MODIFIED="1556015349761">
+<node TEXT="" POSITION="left" ID="ID_1838564308" CREATED="1556015349759" MODIFIED="1562812652951">
 <edge COLOR="#0000ff"/>
 </node>
 <node TEXT="make your websit work" POSITION="right" ID="ID_1180714112" CREATED="1556015351918" MODIFIED="1556016281748">
@@ -88,7 +90,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="An implementation" ID="ID_1406216878" CREATED="1556016301007" MODIFIED="1556016318194"><richcontent TYPE="NOTE">
 
@@ -102,7 +103,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
